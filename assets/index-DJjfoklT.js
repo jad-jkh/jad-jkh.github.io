@@ -21542,6 +21542,9 @@ const Oy = [{
 	name: "Education",
 	to: "education"
 }, {
+	name: "Experience",
+	to: "experience"
+}, {
 	name: "Projects",
 	to: "projects"
 }, {
@@ -21697,6 +21700,13 @@ function K_() {
 	return Ea({
 		queryKey: ["skills"],
 		queryFn: async () => (await Ha()).skills
+	})
+}
+
+function Jx9() {
+	return Ea({
+		queryKey: ["experience"],
+		queryFn: async () => (await Ha()).experience
 	})
 }
 var Yx = {
@@ -21891,7 +21901,9 @@ function tO() {
 		data: f
 	} = $_(), {
 		data: p
-	} = K_();
+	} = K_(), {
+		data: expData
+	} = Jx9();
 	return S.jsxs("div", {
 		className: "min-h-screen relative overflow-hidden",
 		children: [S.jsx(U_, {}), S.jsxs("section", {
@@ -22145,6 +22157,83 @@ function tO() {
 					})]
 				})]
 			})
+		}), S.jsx("section", {
+			id: "experience",
+			className: "py-24 bg-gray-100 border-y-4 border-black relative",
+			children: S.jsxs("div", {
+				className: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8",
+				children: [S.jsx(Js, {
+					title: "EXPERIENCE",
+					subtitle: "professional roles & industry work",
+					color: "bg-[#8a0a28]"
+				}), S.jsx("div", {
+					className: "space-y-8",
+					children: expData?.map((h, g) => S.jsxs(Ut.div, {
+						initial: {
+							opacity: 0,
+							x: -50
+						},
+						whileInView: {
+							opacity: 1,
+							x: 0
+						},
+						viewport: {
+							once: !0
+						},
+						transition: {
+							delay: g * .1
+						},
+						className: "relative pl-8 md:pl-0",
+						children: [S.jsx("div", {
+							className: "absolute left-0 top-0 bottom-0 w-1 bg-black md:hidden"
+						}), S.jsxs("div", {
+							className: "bg-white text-black p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative",
+							children: [S.jsx("div", {
+								className: "absolute top-0 right-0 w-8 h-8 bg-[#8a0a28] border-l-4 border-b-4 border-black"
+							}), S.jsxs("div", {
+								className: "flex flex-col md:flex-row md:items-start justify-between mb-4",
+								children: [S.jsxs("div", {
+									className: "flex-1",
+									children: [S.jsx("h3", {
+										className: "font-bold text-lg md:text-2xl leading-tight",
+										children: h.company
+									}), S.jsx("p", {
+										className: "font-bold text-gray-600 font-[family-name:var(--font-body)] text-base md:text-lg",
+										children: h.role
+									}), h.location && S.jsx("p", {
+										className: "text-gray-500 font-[family-name:var(--font-body)] text-sm mt-1",
+										children: h.location
+									})]
+								}), S.jsx("span", {
+									className: "mt-2 md:hidden inline-block px-3 py-1 bg-black text-white font-[family-name:var(--font-display)] text-xs",
+									children: h.year
+								}), S.jsx("div", {
+									className: "hidden md:flex flex-col items-center px-3 py-2 bg-black text-white font-[family-name:var(--font-display)] text-xs text-center shrink-0",
+									style: {
+										gap: "2px",
+										marginLeft: "1rem"
+									},
+									children: h.year.includes(" - ") ? S.jsxs(S.Fragment, {
+										children: [S.jsx("div", {
+											className: "whitespace-nowrap",
+											children: h.year.split(" - ")[0]
+										}), S.jsx("div", {
+											className: "whitespace-nowrap",
+											children: h.year.split(" - ")[1]
+										})]
+									}) : S.jsx("div", {
+										className: "whitespace-nowrap",
+										children: h.year
+									})
+								})]
+							}), S.jsx("div", {
+								className: "text-base md:text-lg whitespace-pre-line",
+								children: h.description
+							})]
+						})]
+					}, h.id))
+				})]
+			})
 		}), S.jsxs("section", {
 			id: "projects",
 			className: "py-24 relative overflow-hidden bg-gray-800",
@@ -22175,7 +22264,8 @@ function tO() {
                         const v = {
                             "Smart Table Solutions": "./images/project-smart-table.png",
                             SoilSense: "./images/project-soilsense.png",
-                            "Wi-Fi Desk Buddy": "./images/project-wifi-clock.png"
+                            "Wi-Fi Desk Buddy": "./images/project-wifi-clock.png",
+                            Vyrex: "./images/project-vyrex.png"
                           } [h.title],
                           x = h.title === "Smart Table Solutions";
                         return S.jsx(Ut.div, {

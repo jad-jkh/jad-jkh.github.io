@@ -448,16 +448,22 @@
         <!-- Navigation Menu -->
         <div class="nav-menu">
             <button class="nav-button" onclick="handleNavClick('education', event)">EDUCATION</button>
+            <button class="nav-button" onclick="handleNavClick('experience', event)">EXPERIENCE</button>
             <button class="nav-button" onclick="handleNavClick('projects', event)">PROJECTS</button>
             <button class="nav-button" onclick="handleNavClick('leadership', event)">LEADERSHIP</button>
             <button class="nav-button" onclick="handleNavClick('skills', event)">SKILLS</button>
         </div>
 
         <!-- Sub Menus -->
+        <div class="sub-menu" id="experienceSubMenu">
+            <button class="sub-menu-button" onclick="askAbout('Tell me about ZKK Consulting')">ZKK Consulting</button>
+            <button class="sub-menu-button" onclick="askAbout('Tell me about Oncor')">Oncor Electric Delivery</button>
+        </div>
+
         <div class="sub-menu" id="projectsSubMenu">
+            <button class="sub-menu-button" onclick="askAbout('Tell me about Vyrex')">Vyrex</button>
             <button class="sub-menu-button" onclick="askAbout('Tell me about Smart Table Solutions')">Smart Table Solutions</button>
             <button class="sub-menu-button" onclick="askAbout('Tell me about SoilSense')">SoilSense</button>
-            <button class="sub-menu-button" onclick="askAbout('Tell me about Wi-Fi Desk Buddy')">Wi-Fi Desk Buddy</button>
         </div>
 
         <div class="sub-menu" id="leadershipSubMenu">
@@ -526,36 +532,49 @@
 
         const RESUME_DATA = `
 Name: Jad Haddad
-Contact: jadkh6@gmail.com | +1-972-469-0231 | linkedin.com/in/jadksrahaddad
+Contact: jadkh6@gmail.com | +1-972-469-0231 | linkedin.com/in/jadksrahaddad | jad-haddad.com | zkkconsulting.com/team/#jad
 Status: U.S. Citizen
 
 EDUCATION:
 - Bachelor of Science in Electronic Systems Engineering at Texas A&M University
-- GPA: 3.4
-- Expected Graduation: December 2027
-- Relevant Coursework: Electromagnetics & High Frequency Systems, Local & Metro Networks, Power Systems & Circuit Application, C/C++ for Microcontrollers, Product Development
+- GPA: 3.3
+- Aug. 2023 - Expected Graduation December 2027
+- Relevant Coursework: Analog & Digital Electronics, Circuit Analysis, Microcontroller Architecture, Embedded Systems Software, Electronic Instrumentation, Electronics Testing, Electromagnetics & High-Frequency Systems, Power Systems & Circuits, Wireless Transmission Systems
 
-EXPERIENCE & PROJECTS:
+WORK EXPERIENCE:
 
-1. Smart Table Solutions - Custom Standing Desks (May 2025 - Jul 2025)
-   - Founder, Self-Employed Electrical Engineer in Plano, Texas
-   - Built and sold STM32-based smart standing desks generating ~$2,400 revenue from 8 local customers
-   - Developed control for 12V DC geared lift motor with optional add-ons (LED lighting, stored height presets, different motor speed options)
-   - Designed modular PCB in KiCad, validated in Multisim
-   - Collaborated with peer on enclosure design in Solid Edge CAD
+1. ZKK Consulting LLC - Co-Founder, Technical & Patent Research Lead (Aug. 2026 - Present)
+   - Dallas-Fort Worth Metroplex, Texas
+   - Co-founded an engineering research firm and built its technical practice spanning electronics, embedded systems, connected products, component and supply-chain landscapes, patent landscapes, and certification pathways, generating ~$15,000 within the first month of operation
+   - Directs patent and prior-art research for clients across medical devices, electronics, and engineering-led hardware, mapping up to 15 patents in a single landscape across technical features, ownership, and status
+   - Builds bottom-up TAM, SAM, and SOM models and competitive teardown analyses, translating component cost, supplier availability, and FCC and FDA certification pathways into a defensible market-entry cost and risk picture
+   - ZKK Consulting is a market research and growth consulting firm ("Research That Makes The Next Decision Clearer"); Jad owns its technology and product research
 
-2. SoilSense - Soil Moisture & Automated Irrigation (Apr 2025 - Jul 2025)
+2. Oncor Electric Delivery, Glen Rose Transmission - Protection & Control Engineering Intern (May 2026 - Aug. 2026)
+   - Glen Rose, Texas
+   - Programmed, configured, and field-tested 80+ protective relays spanning electromechanical, solid-state, and microprocessor-based generations, supporting protection and control across 345kV and 138kV transmission substations serving the Comanche Peak Nuclear Power Plant
+   - Executed secondary current-injection and insulation-resistance testing on Doble, Arbiter, and Omicron test sets, validating pickup thresholds, trip paths, and scheme operation against approved settings
+   - Delivered a technical capstone on capacitor-bank theory and application, presenting to 25+ directors and senior engineers and building 4 interactive HTML/SVG simulations adopted as a company-wide standard training reference
+
+ENGINEERING PROJECTS:
+
+1. Vyrex - Wrist-Worn Fall-Detection Wearable (Feb. 2026 - May 2026)
+   - Founder, Hardware Lead in College Station, Texas
+   - Architected a compact (~30 x 25 mm) 4-layer mixed-signal PCB through revision 3.0.0 in KiCad, integrating an ESP32-C3 Mini BLE microcontroller, LSM6DSV16XTR 6-axis IMU, Li-Po charge management, USB-C power regulation, and MOSFET-driven haptics with flyback protection
+   - Ran a 3-way microcontroller trade study, selecting a pre-certified MCU module that eliminated FCC 47 CFR Part 15C intentional-radiator testing, saving ~$17,000 in testing fees
+   - Ran fall-detection decision trees on the LSM6DSV16XTR Machine Learning Core and built a companion BLE app that retrained detection parameters from on-device gait data
+   - Drove full BOM specification and sourcing across JLCPCB's vertical supply chain
+
+2. Smart Table Solutions - Height-Adjustable Desk Control System (May 2025 - Jul 2025)
+   - Founder, Self-Employed Electronics Engineer in McKinney, Texas
+   - Engineered and sold an STM32-based motor-controlled table, generating ~$2,400 across 8 customer units at a 100% on-time fulfillment rate
+   - Designed a 12VDC H-bridge motor driver with overcurrent protection, low-pass gate filtering, and closed-loop PWM speed control, validated in LTspice before board bring-up
+   - Laid out a modular KiCad PCB with expansion interfaces, programmed the firmware, and co-developed the enclosure in Solid Edge
+
+3. SoilSense - Automated Irrigation Controller (Apr 2025 - Jul 2025)
    - Personal Project in McKinney, Texas
-   - Built Arduino Uno R3 irrigation controller using capacitive soil-moisture sensor
-   - Integrated DC pump controlled using N-MOSFET with LED status indicators
-   - Implemented ultrasonic reservoir-level sensing for low-water alerts
-   - Sustained plants for 9+ months automatically
-
-3. Wi-Fi Desk Buddy - Clock & Pomodoro Timer (Dec 2024 - Feb 2025)
-   - Personal Project in College Station, Texas
-   - Built Wi-Fi-synced LED clock on Raspberry Pi Pico 2 W using NTP
-   - Implemented on-device settings for 12/24-hour formats and RGB color control
-   - Developed Pomodoro focus timer with visual alerts
+   - Built an Arduino Uno R3 irrigation controller in C++ with capacitive soil-moisture sensing, two-channel N-MOSFET pump switching, ultrasonic reservoir-level monitoring, and LED dry-run alerting
+   - Ran independently for 9+ months intervention- and failure-free
 
 LEADERSHIP & INVOLVEMENT:
 
@@ -569,18 +588,21 @@ LEADERSHIP & INVOLVEMENT:
 
 - PAID Member (Dec 2025 - Present)
   * Explore industrial distribution and supply chain principles
-  * Engage in workshops and networking events
+  * Engage in workshops and networking events, applying that lens to component sourcing and BOM cost work
 
 TECHNICAL SKILLS:
-- Microcontrollers: STM32, Arduino, Raspberry Pi Pico
-- PCB Design: KiCad
-- Electronics: Analog/Digital (ADC/DAC, PWM), Interfaces (UART, I2C, SPI), Motor/LED control
-- Programming: C/C++, Python, Java, Bash, HTML, MATLAB
-- Software: Wireshark, Quartus, Excel, Keil µVision
+- Microcontrollers: STM32, Arduino, Raspberry Pi Pico, ESP32
+- PCB Design: KiCad schematic capture and multilayer PCB layout
+- Electronics: Analog/Digital (ADC/DAC, PWM), Interfaces (UART, I2C, SPI, GPIO), motor drive and H-bridge design, power management and Li-Po charging, sensor integration
+- Firmware: BLE, edge machine learning, low-power and deep-sleep design
+- Power / Protection: SEL and Basler protective relays, AcSELerator QuickSet, relay configuration and testing (Doble, Arbiter, Omicron), capacitor-bank and transformer protection, ANSI device numbers
+- Programming: C/C++, Python, Bash, JavaScript, ARM Assembly, Java, HTML, MATLAB, Verilog
+- Research: patent and prior-art research, BOM development and sourcing, TAM/SAM/SOM market modeling, competitive teardown analysis
+- Software: KiCad, LTspice/Multisim, Solid Edge, Keil µVision, ProjectWise, Wireshark, Quartus, Excel
 
 CERTIFICATIONS:
-- Lean Six Sigma Process & Quality Yellow Belt
-- Cloud Computing Fundamentals (LinkedIn Learning)
+- Lean Six Sigma Yellow Belt (Texas A&M)
+- Cloud Computing: Core Concepts (NASBA)
 `;
 
         const messagesContainer = document.getElementById('chatMessages');
@@ -630,6 +652,10 @@ CERTIFICATIONS:
                 document.getElementById('projectsSubMenu').classList.add('active');
                 event.target.classList.add('active');
                 currentSubMenu = 'projects';
+            } else if (category === 'experience') {
+                document.getElementById('experienceSubMenu').classList.add('active');
+                event.target.classList.add('active');
+                currentSubMenu = 'experience';
             } else if (category === 'leadership') {
                 document.getElementById('leadershipSubMenu').classList.add('active');
                 event.target.classList.add('active');
@@ -728,7 +754,22 @@ CERTIFICATIONS:
             if (msg.includes('education') || msg.includes('school') || msg.includes('university') || msg.includes('texas a&m')
                 || msg.includes('eset') || msg.includes('major') || msg.includes('studying') || msg.includes('study')
                ) {
-                return "Jad is pursuing a Bachelor of Science in Electronic Systems Engineering at Texas A&M University with a 3.4 GPA, graduating in December 2027. His coursework includes Electromagnetics, C/C++ for Microcontrollers, and Power Systems!";
+                return "Jad is pursuing a Bachelor of Science in Electronic Systems Engineering at Texas A&M University with a 3.3 GPA, graduating in December 2027. His coursework includes Analog & Digital Electronics, Microcontroller Architecture, Embedded Systems Software, Electromagnetics & High-Frequency Systems, Power Systems & Circuits, and Wireless Transmission Systems!";
+            }
+
+            // ZKK Consulting
+            if (msg.includes('zkk') || msg.includes('consulting') || msg.includes('co-found') || msg.includes('cofound') || msg.includes('patent') || msg.includes('research firm')) {
+                return "Jad is Co-Founder and Technical & Patent Research Lead at ZKK Consulting LLC (Aug. 2026 - Present), an engineering research firm in the Dallas-Fort Worth Metroplex. He built its technical practice across electronics, embedded systems, supply-chain and patent landscapes, and certification pathways - generating ~$15,000 in the first month. He directs patent and prior-art research (mapping up to 15 patents per landscape) and builds bottom-up TAM/SAM/SOM models and competitive teardowns. Tagline: 'Research That Makes The Next Decision Clearer.'";
+            }
+
+            // Oncor
+            if (msg.includes('oncor') || msg.includes('relay') || msg.includes('protection') || msg.includes('substation') || msg.includes('transmission') || msg.includes('intern')) {
+                return "Jad was a Protection & Control Engineering Intern at Oncor Electric Delivery's Glen Rose Transmission group (May 2026 - Aug. 2026). He programmed, configured, and field-tested 80+ protective relays across 345kV and 138kV substations serving the Comanche Peak Nuclear Power Plant, ran current-injection and insulation-resistance testing on Doble, Arbiter, and Omicron test sets, and delivered a capacitor-bank capstone with 4 interactive HTML/SVG simulations adopted as a company-wide training reference!";
+            }
+
+            // Experience general
+            if (msg.includes('experience') || msg.includes('work experience') || msg.includes('job') || msg.includes('career') || msg.includes('employ') || msg.includes('internship')) {
+                return "Jad's work experience: Co-Founder & Technical/Patent Research Lead at ZKK Consulting LLC (Aug. 2026 - Present), and Protection & Control Engineering Intern at Oncor Electric Delivery (May 2026 - Aug. 2026). He also founded the engineering projects Vyrex, Smart Table Solutions, and SoilSense. Ask me about any of them!";
             }
             
             if (msg.includes ('Darian')){
@@ -736,9 +777,14 @@ CERTIFICATIONS:
                 return "DARIAN IS FULL OF SHIT!!!";
                 }
             
+            // Vyrex
+            if (msg.includes('vyrex') || msg.includes('fall detection') || msg.includes('fall-detection') || msg.includes('wearable') || msg.includes('imu')) {
+                return "Vyrex is Jad's wrist-worn fall-detection wearable (Feb. 2026 - May 2026), where he was Founder and Hardware Lead. He architected a compact ~30 x 25 mm 4-layer mixed-signal PCB through rev 3.0.0 in KiCad around an ESP32-C3 Mini BLE MCU and an LSM6DSV16XTR 6-axis IMU, with Li-Po charging, USB-C power, and MOSFET-driven haptics. A pre-certified MCU module eliminated FCC Part 15C testing (~$17,000 saved), and fall-detection decision trees run on the sensor's Machine Learning Core with a companion BLE retraining app!";
+            }
+
             // Smart Table Solutions
-            if (msg.includes('smart table') || msg.includes('standing desk') || msg.includes('experience')) {
-                return "Smart Table Solutions was awesome! Jad built and sold 8 STM32-based smart standing desks, generating ~$2,400. Features included motor control, LED lighting, height presets, and custom PCB design in KiCad. Super cool embedded project!";
+            if (msg.includes('smart table') || msg.includes('standing desk') || msg.includes('h-bridge')) {
+                return "Smart Table Solutions (May 2025 - Jul 2025) - Jad engineered and sold an STM32-based motor-controlled table, generating ~$2,400 across 8 customer units at 100% on-time fulfillment. He designed a 12VDC H-bridge motor driver with overcurrent protection and closed-loop PWM speed control (validated in LTspice), laid out a modular KiCad PCB, wrote the firmware, and co-developed the enclosure in Solid Edge!";
             }
             
             // SoilSense
@@ -746,9 +792,9 @@ CERTIFICATIONS:
                 return "SoilSense is Jad's automated irrigation system built with Arduino Uno R3! It uses capacitive soil-moisture sensors, DC pump control via N-MOSFET, and ultrasonic reservoir sensing. It's kept plants alive for 9+ months automatically. Pretty neat automation!";
             }
             
-            // Wi-Fi Desk Buddy
-            if (msg.includes('desk buddy') || msg.includes('clock') || msg.includes('pomodoro')) {
-                return "The Wi-Fi Desk Buddy is a Raspberry Pi Pico 2 W project featuring a Wi-Fi-synced LED clock using NTP, customizable RGB colors, and a built-in Pomodoro timer with visual alerts. Great productivity tool!";
+            // SoilSense (early match for soil/irrigation keywords handled below too)
+            if (msg.includes('desk buddy') || msg.includes('wi-fi desk') || msg.includes('wifi desk')) {
+                return "Jad has retired the Wi-Fi Desk Buddy from his portfolio. His current projects are Vyrex (fall-detection wearable), Smart Table Solutions (STM32 standing desks), and SoilSense (Arduino irrigation). Want to hear about one of those?";
             }
             
             // IEEE
@@ -768,7 +814,7 @@ CERTIFICATIONS:
             
             // Skills
             if (msg.includes('skill') || msg.includes('program') || msg.includes('software')) {
-                return "Jad's tech stack is impressive! Microcontrollers: STM32, Arduino, Raspberry Pi Pico. Programming: C/C++, Python, Java, Bash, HTML, MATLAB. PCB design in KiCad, plus experience with Wireshark, Quartus, and Keil µVision. He's also got Lean Six Sigma Yellow Belt certified!";
+                return "Jad's tech stack is deep! Microcontrollers: STM32, Arduino, Raspberry Pi Pico, ESP32. PCB design and multilayer layout in KiCad, plus motor drive / H-bridge design, power management and Li-Po charging, BLE, and edge machine learning. Programming: C/C++, Python, Bash, JavaScript, ARM Assembly, Java, HTML, MATLAB, Verilog. Power & protection: SEL/Basler relays, AcSELerator QuickSet, relay testing with Doble/Arbiter/Omicron. Software: LTspice/Multisim, Solid Edge, Keil µVision, ProjectWise. Certifications: Lean Six Sigma Yellow Belt (Texas A&M) and Cloud Computing: Core Concepts (NASBA)!";
             }
             
             // Contact
@@ -778,7 +824,7 @@ CERTIFICATIONS:
             
             // Projects general
             if (msg.includes('project')) {
-                return "Jad has three awesome projects: Smart Table Solutions (STM32 standing desks), SoilSense (Arduino irrigation), and Wi-Fi Desk Buddy (Raspberry Pi Pico clock). Want to know more about any of these?";
+                return "Jad has three engineering projects: Vyrex (wrist-worn fall-detection wearable), Smart Table Solutions (STM32 motor-controlled desks), and SoilSense (Arduino irrigation controller). Want to know more about any of these?";
             }
             
             // Leadership general

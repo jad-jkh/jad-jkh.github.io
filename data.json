@@ -1,21 +1,57 @@
 {
-  "education": [{"id": 2, "school": "Texas A&M University", "degree": "B.S. in Electronic Systems Engineering  |  3.4 GPA", "year": "AUG. 2023 - DEC. 2027", "description": "Focused on Embedded Design, Power Systems, Microcontrollers, and Software Development."}],
+  "education": [{"id": 2, "school": "Texas A&M University", "degree": "B.S. in Electronic Systems Engineering  |  3.3 GPA", "year": "AUG. 2023 - DEC. 2027", "description": "Focused on Embedded Design, Power Systems, Microcontrollers, and Software Development. Relevant coursework: Analog & Digital Electronics, Microcontroller Architecture, Embedded Systems Software, Electronic Instrumentation, Electronics Testing, Electromagnetics & High-Frequency Systems, Power Systems & Circuits, and Wireless Transmission Systems."}],
+  "experience": [
+    
+    {
+      "id": 1,
+      "company": "Oncor Electric Delivery",
+      "role": "Protection & Control Engineering Intern",
+      "location": "Glen Rose, Texas",
+      "year": "May 2026 - Aug. 2026",
+      "description": "• Programmed, configured, and field-tested 80+ protective relays spanning electromechanical, solid-state, and microprocessor-based generations, supporting protection and control across 345kV and 138kV transmission substations serving the Comanche Peak Nuclear Power Plant\n• Executed secondary current-injection and insulation-resistance testing on Doble, Arbiter, and Omicron test sets, validating pickup thresholds, trip paths, and scheme operation against approved settings and documenting results for engineering review\n• Delivered a technical capstone on capacitor-bank fundamentals of theory and application, presenting to 25+ directors and senior engineers and building 4 interactive HTML/SVG simulations adopted as part of a new, company-wide standard training reference on capacitor banks"
+    },
+
+    {
+      "id": 2,
+      "company": "ZKK Consulting LLC",
+      "role": "Co-Founder, Technical & Patent Research Lead",
+      "location": "Dallas–Fort Worth Metroplex, Texas",
+      "year": "Aug. 2026 - Present",
+      "description": "• Co-founded an engineering research firm and built its technical practice spanning electronics, embedded systems, connected products, component and supply-chain landscapes, patent landscapes, and certification pathways, generating ~$15,000 within the first month of operation\n• Direct patent and prior-art research for clients across medical devices, electronics, and engineering-led hardware, mapping up to 15 patents in a single landscape across technical features, ownership, and status to clarify product and market-entry decisions before capital is committed\n• Build bottom-up TAM, SAM, and SOM models and competitive teardown analyses, translating component cost, supplier availability, and FCC and FDA certification pathways into a defensible market-entry cost and risk picture\n• Own the firm's technology and product research — bringing technical context to the market, competitive, pricing, and sourcing questions behind a commercial decision"
+    }
+  ],
   "leadership": [
     {"id": 2, "role": "Local Chapter Member", "organization": "Institute of Electrical and Electronics Engineers (IEEE-TAMU)", "year": "Dec. 2025 - Present", "description": "• Applied workshop-taught skills in Keil µVision (firmware development) and KiCad (schematic/PCB layout) to personal projects, developing hardware and firmware integration expertise\n• Participate in technical seminars, design competitions, and networking events to enhance collaborative troubleshooting and communicate design decisions, while expanding industry connections"},
     {"id": 3, "role": "Mentor, Former Special Events Planning Committee", "organization": "Freshmen Exemplifying Aggie Spirit Together (FEAST)", "year": "Aug. 2023 - Present", "description": "• Mentored 5 freshmen through academic, social, and organizational integration, supporting their first year at Texas A&M\n• Helped coordinate event logistics and an $8,000 semester budget to plan and deliver high-quality engaging events for 96 peers"},
-    {"id": 4, "role": "Member", "organization": "Professional Association of Industrial Distribution (PAID)", "year": "Dec. 2025 - Present", "description": "• Explore industrial distribution and supply chain principles, developing engineering problem-solving knowledge in logistics\n• Engage in workshops, seminars, and networking events to broaden understanding of supply chain practices"}
+    {"id": 4, "role": "Member", "organization": "Professional Association of Industrial Distribution (PAID)", "year": "Dec. 2025 - Present", "description": "• Explore industrial distribution and supply chain principles, developing engineering problem-solving knowledge in logistics\n• Engage in workshops, seminars, and networking events to broaden understanding of supply chain practices, applying that lens to component sourcing and BOM cost work"}
   ],
   "projects": [
     {
+      "id": 7,
+      "title": "Vyrex",
+      "description": "Wrist-worn fall-detection wearable. Architected a compact (~30 x 25 mm) 4-layer mixed-signal PCB through revision 3.0.0 in KiCad around an ESP32-C3 BLE MCU and LSM6DSV16XTR 6-axis IMU, running fall-detection decision trees on the sensor's Machine Learning Core",
+      "techStack": ["KiCad", "ESP32-C3", "BLE", "Edge ML"],
+      "highlights": [
+        "Architected a ~30 x 25 mm 4-layer mixed-signal PCB (rev 3.0.0) in KiCad integrating an ESP32-C3 Mini BLE microcontroller, LSM6DSV16XTR 6-axis IMU, Li-Po charge management, USB-C power regulation, and MOSFET-driven haptics with flyback protection",
+        "Ran a 3-way microcontroller trade study against assembler stock, power draw, and pin compatibility, selecting a pre-certified MCU module that eliminated FCC 47 CFR Part 15C intentional-radiator testing (~$17,000 saved)",
+        "Migrated inertial sensing to the LSM6DSV16XTR IMU to run fall-detection decision trees on the sensor Machine Learning Core, cutting data offloads and deep-sleep interrupts",
+        "Built a companion BLE application that retrained detection parameters from on-device collected gait data",
+        "Drove full BOM specification and sourcing across JLCPCB's vertical supply chain, bench-validating the architecture on an ESP32 platform before board spin"
+      ],
+      "link": "#",
+      "githubLink": "#"
+    },
+    {
       "id": 4,
       "title": "Smart Table Solutions",
-      "description": "Built STM32 BluePill-based smart standing desks, generating $2,400 in revenue. Developed motor control with optional add-ons. Designed modular PCB in KiCad",
+      "description": "Built STM32-based motor-controlled standing desks, generating $2,400 in revenue across 8 customer units at a 100% on-time fulfillment rate. Developed closed-loop motor control with optional add-ons. Designed modular PCB in KiCad",
       "techStack": ["STM32", "KiCad", "Multisim", "Solid Edge"],
       "highlights": [
         "Designed & implemented STM32-based control systems for custom standing desks",
+        "Designed a 12VDC H-bridge motor driver with overcurrent protection, low-pass gate filtering, and closed-loop PWM speed control, validated in LTspice before board bring-up",
         "Engineered modular PCBs in KiCad & verified circuitry with Multisim simulations",
         "Integrated hardware & software for motorized lifts, LEDs, and height presets",
-        "Collaborated on Solid Edge CAD enclosures for manufacturable, scalable designs",
+        "Co-developed Solid Edge CAD enclosures for manufacturable, scalable designs",
         "Generated $2,400 in revenue from 8 local customers"
       ],
       "link": "#",
@@ -27,46 +63,44 @@
       "description": "Arduino Uno R3 irrigation controller using capacitive soil-moisture sensor. Integrated DC pump with N-MOSFET, LED indicators, and ultrasonic reservoir sensing for low-water alerts",
       "techStack": ["Arduino", "C++", "N-MOSFET"],
       "highlights": [
-        "Designed Arduino-based autonomous irrigation system achieving 9+ months of continuous operation",
-        "Engineered N-MOSFET pump control circuit with flyback protection and safety interlocks",
-        "Integrated capacitive soil moisture sensing with ultrasonic water level monitoring and RGB status indicators",
+        "Designed Arduino-based autonomous irrigation system achieving 9+ months of continuous, failure-free operation",
+        "Engineered two-channel N-MOSFET pump control circuit with flyback protection and safety interlocks",
+        "Integrated capacitive soil moisture sensing with ultrasonic reservoir-level monitoring and RGB status indicators",
         "Developed state machine logic with threshold-based decision making and cooldown periods"
-      ],
-      "link": "#",
-      "githubLink": "#"
-    },
-    {
-      "id": 6,
-      "title": "Wi-Fi Desk Buddy",
-      "description": "Wi-Fi-synced LED clock on Raspberry Pi Pico 2 W using NTP for automatic time correction. Features 12/24-hour formats, RGB color control, and Pomodoro focus timer with visual alerts",
-      "techStack": ["Raspberry Pi Pico", "Python", "NTP"],
-      "highlights": [
-        "Built Wi-Fi-enabled LED clock with automatic NTP time synchronization on Raspberry Pi Pico 2 W",
-        "Implemented dual time format display (12/24-hour) with customizable RGB color control",
-        "Developed Pomodoro timer with visual alerts for productivity and focus tracking",
-        "Programmed MicroPython firmware for wireless connectivity and real-time updates"
       ],
       "link": "#",
       "githubLink": "#"
     }
   ],
   "skills": [
-    {"id": 15, "name": "Microcontrollers (STM32, Arduino, Raspberry Pi)", "category": "Technical", "proficiency": 5},
-    {"id": 16, "name": "PCB Design (KiCad)", "category": "Technical", "proficiency": 5},
+    {"id": 15, "name": "Microcontrollers (STM32, Arduino, Raspberry Pi, ESP32)", "category": "Technical", "proficiency": 5},
+    {"id": 16, "name": "PCB Design (KiCad schematic capture & multilayer layout)", "category": "Technical", "proficiency": 5},
     {"id": 17, "name": "Analog/Digital (ADC/DAC, PWM)", "category": "Technical", "proficiency": 4},
-    {"id": 18, "name": "Interfaces (UART, I2C, SPI)", "category": "Technical", "proficiency": 4},
-    {"id": 19, "name": "Motor/LED Control", "category": "Technical", "proficiency": 4},
+    {"id": 18, "name": "Interfaces (UART, I2C, SPI, GPIO)", "category": "Technical", "proficiency": 4},
+    {"id": 19, "name": "Motor Drive & H-Bridge Design", "category": "Technical", "proficiency": 4},
+    {"id": 40, "name": "Power Management & Li-Po Charging", "category": "Technical", "proficiency": 4},
+    {"id": 41, "name": "BLE & Edge Machine Learning", "category": "Technical", "proficiency": 4},
+    {"id": 42, "name": "Low-Power & Deep-Sleep Design", "category": "Technical", "proficiency": 4},
+    {"id": 43, "name": "Protective Relays (SEL, Basler) & Relay Testing (Doble, Arbiter, Omicron)", "category": "Technical", "proficiency": 4},
+    {"id": 44, "name": "BOM Development & Supply-Chain Sourcing", "category": "Technical", "proficiency": 4},
+    {"id": 45, "name": "Patent & Prior-Art Research / TAM-SAM-SOM Modeling", "category": "Technical", "proficiency": 4},
     {"id": 30, "name": "Lean Six Sigma Yellow Belt – Process Improvement & Quality Management", "category": "Certifications", "proficiency": 5},
-    {"id": 31, "name": "Cloud Computing - Infrastructure, Services & Deployment Models", "category": "Certifications", "proficiency": 5},
+    {"id": 31, "name": "Cloud Computing: Core Concepts (NASBA) – Infrastructure, Services & Deployment Models", "category": "Certifications", "proficiency": 5},
     {"id": 20, "name": "C/C++", "category": "Programming", "proficiency": 5},
     {"id": 21, "name": "Python", "category": "Programming", "proficiency": 4},
     {"id": 22, "name": "Java", "category": "Programming", "proficiency": 3},
     {"id": 23, "name": "Bash", "category": "Programming", "proficiency": 3},
-    {"id": 24, "name": "HTML", "category": "Programming", "proficiency": 3},
+    {"id": 24, "name": "HTML / JavaScript", "category": "Programming", "proficiency": 3},
     {"id": 25, "name": "MATLAB", "category": "Programming", "proficiency": 4},
+    {"id": 32, "name": "ARM Assembly", "category": "Programming", "proficiency": 3},
+    {"id": 33, "name": "Verilog", "category": "Programming", "proficiency": 3},
     {"id": 26, "name": "Wireshark", "category": "Software", "proficiency": 3},
     {"id": 27, "name": "Quartus", "category": "Software", "proficiency": 3},
     {"id": 28, "name": "Excel", "category": "Software", "proficiency": 4},
-    {"id": 29, "name": "Keil µVision", "category": "Software", "proficiency": 4}
+    {"id": 29, "name": "Keil µVision", "category": "Software", "proficiency": 4},
+    {"id": 34, "name": "AcSELerator QuickSet", "category": "Software", "proficiency": 4},
+    {"id": 35, "name": "LTspice / Multisim", "category": "Software", "proficiency": 4},
+    {"id": 36, "name": "Solid Edge", "category": "Software", "proficiency": 3},
+    {"id": 37, "name": "ProjectWise", "category": "Software", "proficiency": 3}
   ]
 }
