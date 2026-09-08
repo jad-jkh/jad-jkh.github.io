@@ -22064,11 +22064,14 @@ function tO() {
 									className: "w-5 h-5"
 								}), "LinkedIn"]
 							}),
+							S.jsx("style", {
+								children: ".zkk-cta{background-color:#e3e3e3}.zkk-cta:hover{background-color:#b5b5b5}"
+							}),
 							S.jsxs("a", {
 								href: "https://www.zkkconsulting.com",
 								target: "_blank",
 								rel: "noopener noreferrer",
-								className: "inline-flex items-center gap-2 px-6 py-3 bg-[#b5b5b5] text-white border-4 border-black font-bold uppercase tracking-wide shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:bg-primary hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all",
+								className: "inline-flex items-center gap-2 px-6 py-3 zkk-cta text-white border-4 border-black font-bold uppercase tracking-wide shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all",
 								"data-testid": "./images/ZKK_logo.png",
 								children: [S.jsx("img", {
 									src: "./images/ZKK_logo.png",
