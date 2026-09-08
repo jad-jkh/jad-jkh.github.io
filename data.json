@@ -8,6 +8,7 @@
       "role": "Protection & Control Engineering Intern",
       "location": "Glen Rose, Texas",
       "year": "May 2026 - Aug. 2026",
+      "logo": "./images/OncorLogo.png",
       "description": "• Programmed, configured, and field-tested 80+ protective relays spanning electromechanical, solid-state, and microprocessor-based generations, supporting protection and control across 345kV and 138kV transmission substations serving the Comanche Peak Nuclear Power Plant\n• Executed secondary current-injection and insulation-resistance testing on Doble, Arbiter, and Omicron test sets, validating pickup thresholds, trip paths, and scheme operation against approved settings and documenting results for engineering review\n• Delivered a technical capstone on capacitor-bank fundamentals of theory and application, presenting to 25+ directors and senior engineers and building 4 interactive HTML/SVG simulations adopted as part of a new, company-wide standard training reference on capacitor banks"
     },
 
@@ -17,6 +18,7 @@
       "role": "Co-Founder, Technical & Patent Research Lead",
       "location": "Dallas–Fort Worth Metroplex, Texas",
       "year": "Aug. 2026 - Present",
+      "logo": "./images/ZKK_logo.png",
       "description": "• Co-founded an engineering research firm and built its technical practice spanning electronics, embedded systems, connected products, component and supply-chain landscapes, patent landscapes, and certification pathways, generating ~$15,000 within the first month of operation\n• Direct patent and prior-art research for clients across medical devices, electronics, and engineering-led hardware, mapping up to 15 patents in a single landscape across technical features, ownership, and status to clarify product and market-entry decisions before capital is committed\n• Build bottom-up TAM, SAM, and SOM models and competitive teardown analyses, translating component cost, supplier availability, and FCC and FDA certification pathways into a defensible market-entry cost and risk picture\n• Own the firm's technology and product research — bringing technical context to the market, competitive, pricing, and sourcing questions behind a commercial decision"
     }
   ],
@@ -67,6 +69,20 @@
         "Engineered two-channel N-MOSFET pump control circuit with flyback protection and safety interlocks",
         "Integrated capacitive soil moisture sensing with ultrasonic reservoir-level monitoring and RGB status indicators",
         "Developed state machine logic with threshold-based decision making and cooldown periods"
+      ],
+      "link": "#",
+      "githubLink": "#"
+    },
+    {
+      "id": 6,
+      "title": "Wi-Fi Desk Buddy",
+      "description": "Wi-Fi-synced LED clock on Raspberry Pi Pico 2 W using NTP for automatic time correction. Features 12/24-hour formats, RGB color control, and a Pomodoro focus timer with visual alerts",
+      "techStack": ["Raspberry Pi Pico", "MicroPython", "NTP"],
+      "highlights": [
+        "Built Wi-Fi-enabled LED clock with automatic NTP time synchronization on Raspberry Pi Pico 2 W",
+        "Implemented dual time format display (12/24-hour) with customizable RGB color control",
+        "Developed Pomodoro timer with visual alerts for productivity and focus tracking",
+        "Programmed MicroPython firmware for wireless connectivity and real-time updates"
       ],
       "link": "#",
       "githubLink": "#"

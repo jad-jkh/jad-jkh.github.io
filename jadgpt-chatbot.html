@@ -464,6 +464,7 @@
             <button class="sub-menu-button" onclick="askAbout('Tell me about Vyrex')">Vyrex</button>
             <button class="sub-menu-button" onclick="askAbout('Tell me about Smart Table Solutions')">Smart Table Solutions</button>
             <button class="sub-menu-button" onclick="askAbout('Tell me about SoilSense')">SoilSense</button>
+            <button class="sub-menu-button" onclick="askAbout('Tell me about the Wi-Fi Desk Buddy')">Wi-Fi Desk Buddy</button>
         </div>
 
         <div class="sub-menu" id="leadershipSubMenu">
@@ -575,6 +576,12 @@ ENGINEERING PROJECTS:
    - Personal Project in McKinney, Texas
    - Built an Arduino Uno R3 irrigation controller in C++ with capacitive soil-moisture sensing, two-channel N-MOSFET pump switching, ultrasonic reservoir-level monitoring, and LED dry-run alerting
    - Ran independently for 9+ months intervention- and failure-free
+
+4. Wi-Fi Desk Buddy - Clock & Pomodoro Timer (Dec 2024 - Feb 2025)
+   - Personal Project in College Station, Texas
+   - Built a Wi-Fi-synced LED clock on Raspberry Pi Pico 2 W using NTP for automatic time correction
+   - Implemented 12/24-hour formats and RGB color control, plus a Pomodoro focus timer with visual alerts
+   - Programmed the MicroPython firmware for wireless connectivity and real-time updates
 
 LEADERSHIP & INVOLVEMENT:
 
@@ -769,7 +776,7 @@ CERTIFICATIONS:
 
             // Experience general
             if (msg.includes('experience') || msg.includes('work experience') || msg.includes('job') || msg.includes('career') || msg.includes('employ') || msg.includes('internship')) {
-                return "Jad's work experience: Co-Founder & Technical/Patent Research Lead at ZKK Consulting LLC (Aug. 2026 - Present), and Protection & Control Engineering Intern at Oncor Electric Delivery (May 2026 - Aug. 2026). He also founded the engineering projects Vyrex, Smart Table Solutions, and SoilSense. Ask me about any of them!";
+                return "Jad's work experience: Co-Founder & Technical/Patent Research Lead at ZKK Consulting LLC (Aug. 2026 - Present), and Protection & Control Engineering Intern at Oncor Electric Delivery (May 2026 - Aug. 2026). He also founded the engineering projects Vyrex, Smart Table Solutions, SoilSense, and the Wi-Fi Desk Buddy. Ask me about any of them!";
             }
             
             if (msg.includes ('Darian')){
@@ -793,8 +800,8 @@ CERTIFICATIONS:
             }
             
             // SoilSense (early match for soil/irrigation keywords handled below too)
-            if (msg.includes('desk buddy') || msg.includes('wi-fi desk') || msg.includes('wifi desk')) {
-                return "Jad has retired the Wi-Fi Desk Buddy from his portfolio. His current projects are Vyrex (fall-detection wearable), Smart Table Solutions (STM32 standing desks), and SoilSense (Arduino irrigation). Want to hear about one of those?";
+            if (msg.includes('desk buddy') || msg.includes('wi-fi desk') || msg.includes('wifi desk') || msg.includes('clock') || msg.includes('pomodoro')) {
+                return "The Wi-Fi Desk Buddy (Dec 2024 - Feb 2025) is a Raspberry Pi Pico 2 W project: a Wi-Fi-synced LED clock using NTP for automatic time correction, with 12/24-hour formats, RGB color control, and a built-in Pomodoro focus timer with visual alerts. Jad wrote the MicroPython firmware for the wireless connectivity and real-time updates!";
             }
             
             // IEEE
@@ -824,7 +831,7 @@ CERTIFICATIONS:
             
             // Projects general
             if (msg.includes('project')) {
-                return "Jad has three engineering projects: Vyrex (wrist-worn fall-detection wearable), Smart Table Solutions (STM32 motor-controlled desks), and SoilSense (Arduino irrigation controller). Want to know more about any of these?";
+                return "Jad has four engineering projects: Vyrex (wrist-worn fall-detection wearable), Smart Table Solutions (STM32 motor-controlled desks), SoilSense (Arduino irrigation controller), and the Wi-Fi Desk Buddy (Raspberry Pi Pico clock + Pomodoro timer). Want to know more about any of these?";
             }
             
             // Leadership general

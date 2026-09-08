@@ -22063,7 +22063,19 @@ function tO() {
 								children: [S.jsx(My, {
 									className: "w-5 h-5"
 								}), "LinkedIn"]
-							})]
+							}),
+							S.jsxs("a", {
+								href: "https://www.zkkconsulting.com",
+								target: "_blank",
+								rel: "noopener noreferrer",
+								className: "inline-flex items-center gap-2 px-6 py-3 bg-[#b5b5b5] text-white border-4 border-black font-bold uppercase tracking-wide shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:bg-primary hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all",
+								"data-testid": "./images/ZKK_logo.png",
+								children: [S.jsx("img", {
+									src: "./images/ZKK_logo.png",
+									alt: "ZKK Consulting",
+									className: "h-10 w-auto object-contain"
+								})]})
+						]
 						})]
 					})]
 				})
@@ -22193,16 +22205,23 @@ function tO() {
 							}), S.jsxs("div", {
 								className: "flex flex-col md:flex-row md:items-start justify-between mb-4",
 								children: [S.jsxs("div", {
-									className: "flex-1",
-									children: [S.jsx("h3", {
-										className: "font-bold text-lg md:text-2xl leading-tight",
-										children: h.company
-									}), S.jsx("p", {
-										className: "font-bold text-gray-600 font-[family-name:var(--font-body)] text-base md:text-lg",
-										children: h.role
-									}), h.location && S.jsx("p", {
-										className: "text-gray-500 font-[family-name:var(--font-body)] text-sm mt-1",
-										children: h.location
+									className: "flex items-start gap-4 flex-1",
+									children: [h.logo && S.jsx("img", {
+										src: h.logo,
+										alt: h.company,
+										className: "h-14 w-auto object-contain shrink-0 mt-1"
+									}), S.jsxs("div", {
+										className: "flex-1",
+										children: [S.jsx("h3", {
+											className: "font-bold text-lg md:text-2xl leading-tight",
+											children: h.company
+										}), S.jsx("p", {
+											className: "font-bold text-gray-600 font-[family-name:var(--font-body)] text-base md:text-lg",
+											children: h.role
+										}), h.location && S.jsx("p", {
+											className: "text-gray-500 font-[family-name:var(--font-body)] text-sm mt-1",
+											children: h.location
+										})]
 									})]
 								}), S.jsx("span", {
 									className: "mt-2 md:hidden inline-block px-3 py-1 bg-black text-white font-[family-name:var(--font-display)] text-xs",
@@ -22259,7 +22278,7 @@ function tO() {
                       color: "bg-purple-600",
                       whiteOutline: !0
                     }), S.jsx("div", {
-                      className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
+                      className: "flex flex-wrap justify-center",
                       children: u?.map((h, g) => {
                         const v = {
                             "Smart Table Solutions": "./images/project-smart-table.png",
@@ -22269,6 +22288,7 @@ function tO() {
                           } [h.title],
                           x = h.title === "Smart Table Solutions";
                         return S.jsx(Ut.div, {
+                          className: "w-full md:w-1/2 p-4",
                           initial: {
                             opacity: 0,
                             scale: .9
@@ -22286,7 +22306,7 @@ function tO() {
                           children: S.jsxs(Ay, {
                             className: "h-full flex flex-col group",
                             children: [S.jsxs("div", {
-                              className: "bg-black h-48 mb-6 relative overflow-hidden border-2 border-black group-hover:border-primary transition-colors",
+                              className: `${h.title==="Vyrex"?"bg-white p-4":"bg-black"} h-48 mb-6 relative overflow-hidden border-2 border-black group-hover:border-primary transition-colors`,
                               children: [S.jsx("div", {
                                 className: "absolute inset-0 flex items-center justify-center text-white/20",
                                 children: S.jsx(RE, {
@@ -22295,7 +22315,7 @@ function tO() {
                               }), v ? S.jsx("img", {
                                 src: v,
                                 alt: h.title,
-                                className: "w-full h-full object-cover"
+                                className: `w-full h-full ${h.title==="Vyrex"?"object-contain":"object-cover"}`
                               }) : S.jsx("img", {
                                 src: `https://images.unsplash.com/photo-${155e10+g}?w=800&h=600&fit=crop`,
                                 alt: h.title,
@@ -22480,7 +22500,7 @@ function tO() {
                   S.jsx("div", {
                  className: "mt-auto",
                  children: S.jsxs("div", {
-                   className: "grid grid-cols-2 gap-2",
+                   className: h.title==="Vyrex"?"grid grid-cols-1 gap-2":"grid grid-cols-2 gap-2",
                    children: [
 
                      S.jsxs("button", {
@@ -22495,7 +22515,7 @@ function tO() {
                         }), " View Project"]
                       }),
                      
-                     S.jsxs("button", {
+                     h.title!=="Vyrex" && S.jsxs("button", {
                      onClick: () => window.open('https://github.com/jad-jkh?tab=repositories', '_blank'),
                      className: "flex items-center justify-center py-3 bg-purple-700 text-white border-2 border-black hover:text-purple-700 hover:bg-yellow-400  font-bold text-sm uppercase transition-colors cursor-pointer",
                      "data-testid": `button-github-${h.id}`,
@@ -22848,11 +22868,11 @@ function tO() {
 							className: "w-6 h-6"
 						})
 					}), i.image && S.jsx("div", {
-						className: "w-full h-64 bg-gray-900 overflow-hidden",
+						className: `w-full h-64 overflow-hidden ${i.title==="Vyrex"?"bg-white p-6":"bg-gray-900"}`,
 						children: S.jsx("img", {
 							src: i.image,
 							alt: i.title,
-							className: "w-full h-full object-cover"
+							className: `w-full h-full ${i.title==="Vyrex"?"object-contain":"object-cover"}`
 						})
 					}), S.jsxs("div", {
 						className: "p-6",
