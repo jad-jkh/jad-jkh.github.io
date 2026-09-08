@@ -22208,18 +22208,18 @@ function tO() {
 							}), S.jsxs("div", {
 								className: "flex flex-col md:flex-row md:items-start justify-between mb-4",
 								children: [S.jsxs("div", {
-									className: "flex items-start gap-4 flex-1",
+									className: "flex items-start gap-4 flex-1 min-w-0",
 									children: [h.logo && S.jsx("img", {
 										src: h.logo,
 										alt: h.company,
-										className: "h-14 w-auto object-contain shrink-0 mt-1"
+										className: "h-12 w-auto object-contain shrink-0 mt-1"
 									}), S.jsxs("div", {
-										className: "flex-1",
+										className: "flex-1 min-w-0",
 										children: [S.jsx("h3", {
-											className: "font-bold text-lg md:text-2xl leading-tight",
+											className: "font-bold text-lg md:text-2xl leading-tight break-words",
 											children: h.company
 										}), S.jsx("p", {
-											className: "font-bold text-gray-600 font-[family-name:var(--font-body)] text-base md:text-lg",
+											className: "font-bold text-gray-600 font-[family-name:var(--font-body)] text-base md:text-lg break-words",
 											children: h.role
 										}), h.location && S.jsx("p", {
 											className: "text-gray-500 font-[family-name:var(--font-body)] text-sm mt-1",
