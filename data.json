@@ -8,11 +8,11 @@
       "location": "Glen Rose, Texas",
       "year": "May 2026 - Aug. 2026",
       "logo": "./images/OncorLogo.png",
-      "description": "• 80+ protective relays programmed & field-tested\n• 345kV/138kV substations serving Comanche Peak Nuclear Plant\n• Capstone simulations adopted as company-wide training",
+      "description": "• Programmed, tested & configured 80+ protective relays across substations serving Comanche Peak Nuclear Power Plant\n• Confirmed every relay trips at the right settings, so faults get shut off before they spread\n• Built 4 animations that are now Oncor's company-standard capacitor bank training, presented to 25+ directors",
       "details": [
         "Programmed, configured, and field-tested 80+ protective relays spanning electromechanical, solid-state, and microprocessor-based generations, supporting protection and control across 345kV and 138kV transmission substations serving the Comanche Peak Nuclear Power Plant",
         "Executed secondary current-injection and insulation-resistance testing on Doble, Arbiter, and Omicron test sets, validating pickup thresholds, trip paths, and scheme operation against approved settings and documenting results for engineering review",
-        "Delivered a technical capstone on capacitor-bank fundamentals of theory and application, presenting to 25+ directors and senior engineers and building 4 interactive HTML/SVG simulations adopted as part of a new, company-wide standard training reference on capacitor banks"
+        "Delivered a technical capstone on capacitor-bank theory and application to 25+ directors and senior engineers, building 4 interactive HTML/SVG animations that are now Oncor's company-standard training for capacitor banks"
       ],
       "media": [
         {"src": "./images/experience/oncor/power-triangle.html", "caption": "Animation: the power triangle, explained with a drink"},
@@ -31,7 +31,7 @@
       "location": "Dallas–Fort Worth Metroplex, Texas",
       "year": "Aug. 2026 - Present",
       "logo": "./images/ZKK_logo.png",
-      "description": "• Co-founded; ~$15K revenue in month one\n• Patent & prior-art research for hardware clients\n• Market sizing & cost models for market entry",
+      "description": "• Co-founded an engineering research firm that earned ~$15K in its first month\n• Map patents & competitors so hardware and medical device clients know if a product can reach market before they invest\n• Price out market entry (market size, part costs, FCC/FDA certification) so clients see the cost and risk up front",
       "details": [
         "Co-founded an engineering research firm and built its technical practice spanning electronics, embedded systems, connected products, component and supply-chain landscapes, patent landscapes, and certification pathways, generating ~$15,000 within the first month of operation",
         "Direct patent and prior-art research for clients across medical devices, electronics, and engineering-led hardware, mapping up to 15 patents in a single landscape across technical features, ownership, and status to clarify product and market-entry decisions before capital is committed",
@@ -57,7 +57,7 @@
       "image": "./images/project-vyrex.png",
       "logoImage": true,
       "showGithub": false,
-      "summary": "Wrist-worn fall-detection wearable: a ~30 x 25 mm 4-layer PCB with an ESP32-C3 and an IMU running on-sensor ML",
+      "summary": "Designed a wrist-worn fall-detection wearable on a custom circuit board, with a 2-week battery life and on-board machine learning trained on real user walking data",
       "description": "Wrist-worn fall-detection wearable. Architected a compact (~30 x 25 mm) 4-layer mixed-signal PCB through revision 3.0.0 in KiCad around an ESP32-C3 BLE MCU and LSM6DSV16XTR 6-axis IMU, running fall-detection decision trees on the sensor's Machine Learning Core",
       "techStack": ["KiCad", "ESP32-C3", "BLE", "Edge ML"],
       "media": [
@@ -77,7 +77,7 @@
     {
       "id": 4,
       "title": "Smart Table Solutions",
-      "summary": "STM32 motorized standing desks with custom PCBs. $2,400 in revenue from 8 customers",
+      "summary": "Designed & sold motorized standing desks with custom control boards: $2,400 in revenue from 8 customers, all delivered on time",
       "description": "Built STM32-based motor-controlled standing desks, generating $2,400 in revenue across 8 customer units at a 100% on-time fulfillment rate. Developed closed-loop motor control with optional add-ons. Designed modular PCB in KiCad",
       "techStack": ["STM32", "KiCad", "Multisim", "Solid Edge"],
       "highlights": [
@@ -94,7 +94,7 @@
     {
       "id": 5,
       "title": "SoilSense",
-      "summary": "Arduino irrigation controller that waters by soil moisture and alerts when the reservoir runs low",
+      "summary": "Built an automatic plant-watering system that ran 9+ months without a single failure",
       "description": "Arduino Uno R3 irrigation controller using capacitive soil-moisture sensor. Integrated DC pump with N-MOSFET, LED indicators, and ultrasonic reservoir sensing for low-water alerts",
       "techStack": ["Arduino", "C++", "N-MOSFET"],
       "highlights": [
@@ -109,7 +109,7 @@
     {
       "id": 6,
       "title": "Wi-Fi Desk Buddy",
-      "summary": "Wi-Fi LED clock on a Raspberry Pi Pico 2 W with auto time sync, RGB colors, and a Pomodoro timer",
+      "summary": "Built a desk clock that sets its own time over Wi-Fi, with a built-in Pomodoro focus timer",
       "description": "Wi-Fi-synced LED clock on Raspberry Pi Pico 2 W using NTP for automatic time correction. Features 12/24-hour formats, RGB color control, and a Pomodoro focus timer with visual alerts",
       "techStack": ["Raspberry Pi Pico", "MicroPython", "NTP"],
       "highlights": [
