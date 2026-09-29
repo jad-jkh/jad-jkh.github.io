@@ -21881,10 +21881,116 @@ function Dy(e) {
 		}]
 	})(e)
 }
+function Gallery({
+	items: e,
+	alt: n,
+	logo: i,
+	light: o
+}) {
+	const [a, u] = T.useState(0), c = e.length, f = d => u(v => (v + d + c) % c);
+	T.useEffect(() => {
+		if (c < 2) return;
+		const h = g => {
+			g.key === "ArrowRight" ? f(1) : g.key === "ArrowLeft" && f(-1)
+		};
+		return document.addEventListener("keydown", h), () => document.removeEventListener("keydown", h)
+	}, [c]);
+	const m = e[a] || e[0],
+		src = m && (typeof m == "string" ? m : m.src),
+		cap = m && typeof m != "string" ? m.caption : null,
+		ext = src ? src.split("?")[0].split(".").pop().toLowerCase() : "",
+		cls = "w-full h-full object-contain",
+		arrow = "absolute top-1/2 -translate-y-1/2 w-10 h-10 bg-white text-black border-2 border-black font-black text-2xl flex items-center justify-center hover:bg-red-800 hover:text-white transition-colors";
+	return S.jsxs(S.Fragment, {
+		children: [S.jsx("div", {
+			className: `relative ${o?"bg-white":"bg-gray-900"} border-b-4 border-black overflow-hidden`,
+			style: {
+				aspectRatio: "16 / 9"
+			},
+			children: c ? S.jsxs(S.Fragment, {
+				children: [["mp4", "webm", "mov"].includes(ext) ? S.jsx("video", {
+					src,
+					className: cls,
+					autoPlay: !0,
+					loop: !0,
+					muted: !0,
+					playsInline: !0,
+					controls: !0
+				}, src) : ext === "html" ? S.jsx("iframe", {
+					src,
+					title: cap || n,
+					className: "w-full h-full bg-white",
+					style: {
+						border: 0
+					}
+				}, src) : S.jsx("a", {
+					href: src,
+					target: "_blank",
+					rel: "noopener noreferrer",
+					title: "Open full size",
+					className: "block w-full h-full",
+					style: {
+						cursor: "zoom-in"
+					},
+					children: S.jsx("img", {
+						src,
+						alt: cap || n,
+						className: cls
+					})
+				}, src), c > 1 && S.jsxs(S.Fragment, {
+					children: [S.jsx("button", {
+						onClick: () => f(-1),
+						"aria-label": "Previous",
+						className: `${arrow} left-2`,
+						children: "‹"
+					}), S.jsx("button", {
+						onClick: () => f(1),
+						"aria-label": "Next",
+						className: `${arrow} right-2`,
+						children: "›"
+					}), S.jsx("div", {
+						className: "absolute right-2 px-2 py-1 bg-black text-white text-xs font-bold",
+						style: {
+							bottom: "0.5rem"
+						},
+						children: `${a+1} / ${c}`
+					})]
+				})]
+			}) : S.jsxs("div", {
+				className: "w-full h-full flex flex-col items-center justify-center gap-3 text-gray-400",
+				children: [i && S.jsx("img", {
+					src: i,
+					alt: "",
+					className: "object-contain",
+					style: {
+						height: "4rem",
+						opacity: .4
+					}
+				}), S.jsx("p", {
+					className: "font-bold uppercase tracking-wide text-sm",
+					children: "Photos coming soon"
+				})]
+			})
+		}), c > 0 && (cap || c > 1) && S.jsxs("div", {
+			className: "flex flex-col items-center gap-2 px-6 pt-4",
+			children: [cap && S.jsx("p", {
+				className: "text-gray-600 text-center font-[family-name:var(--font-body)]",
+				children: cap
+			}), c > 1 && S.jsx("div", {
+				className: "flex flex-wrap justify-center gap-2",
+				children: e.map((x, idx) => S.jsx("button", {
+					onClick: () => u(idx),
+					"aria-label": `Go to slide ${idx+1}`,
+					className: `w-3 h-3 border-2 border-black ${idx===a?"bg-black":"bg-white"}`
+				}, idx))
+			})]
+		})]
+	})
+}
 const ea = ["./images/profile-pixel-jad.png", "./images/jad_w_pro.jpg", "./images/jad_w_spain.jpg"];
 
 function tO() {
-	const [e, n] = T.useState(0), [i, o] = T.useState(null), {
+	const [e, n] = T.useState(0), [i, o] = T.useState(null), [expSel, setExpSel] = T.useState(null), {
 		data: a
 	} = H_(), {
 		data: u
@@ -21897,6 +22003,14 @@ function tO() {
 		}, 1e4);
 		return () => clearInterval(h)
 	}, []);
+	const openExp = h => setExpSel(h);
+	T.useEffect(() => {
+		if (!expSel) return;
+		const h = g => {
+			g.key === "Escape" && setExpSel(null)
+		};
+		return document.addEventListener("keydown", h), () => document.removeEventListener("keydown", h)
+	}, [expSel]);
 	const {
 		data: f
 	} = $_(), {
@@ -22251,6 +22365,13 @@ function tO() {
 							}), S.jsx("div", {
 								className: "text-base md:text-lg whitespace-pre-line",
 								children: h.description
+							}), S.jsx("button", {
+								onClick: () => openExp(h),
+								className: "mt-6 inline-flex items-center gap-2 px-4 py-2 bg-black text-white border-2 border-black font-bold uppercase tracking-wide hover:bg-red-800 transition-colors",
+								style: {
+									boxShadow: "4px 4px 0 0 #8a0a28"
+								},
+								children: "View Experience →"
 							})]
 						})]
 					}, h.id))
@@ -22283,7 +22404,7 @@ function tO() {
                     }), S.jsx("div", {
                       className: "flex flex-wrap justify-center",
                       children: u?.map((h, g) => {
-                        const v = {
+                        const v = h.image ?? {
                             "Smart Table Solutions": "./images/project-smart-table.png",
                             SoilSense: "./images/project-soilsense.png",
                             "Wi-Fi Desk Buddy": "./images/project-wifi-clock.png",
@@ -22309,7 +22430,7 @@ function tO() {
                           children: S.jsxs(Ay, {
                             className: "h-full flex flex-col group",
                             children: [S.jsxs("div", {
-                              className: `${h.title==="Vyrex"?"bg-white p-4":"bg-black"} h-48 mb-6 relative overflow-hidden border-2 border-black group-hover:border-primary transition-colors`,
+                              className: `${h.logoImage?"bg-white p-4":"bg-black"} h-48 mb-6 relative overflow-hidden border-2 border-black group-hover:border-primary transition-colors`,
                               children: [S.jsx("div", {
                                 className: "absolute inset-0 flex items-center justify-center text-white/20",
                                 children: S.jsx(RE, {
@@ -22318,7 +22439,7 @@ function tO() {
                               }), v ? S.jsx("img", {
                                 src: v,
                                 alt: h.title,
-                                className: `w-full h-full ${h.title==="Vyrex"?"object-contain":"object-cover"}`
+                                className: `w-full h-full ${h.logoImage?"object-contain":"object-cover"}`
                               }) : S.jsx("img", {
                                 src: `https://images.unsplash.com/photo-${155e10+g}?w=800&h=600&fit=crop`,
                                 alt: h.title,
@@ -22492,7 +22613,7 @@ function tO() {
                  children: h.title
                }), S.jsx("p", {
                  className: "text-lg text-gray-600 mb-6 flex-grow",
-                 children: h.description
+                 children: h.summary ?? h.description
                }), S.jsx("div", {
                  className: "mb-6 flex flex-wrap gap-2",
                  children: h.techStack.map(b => S.jsx("span", {
@@ -22503,7 +22624,7 @@ function tO() {
                   S.jsx("div", {
                  className: "mt-auto",
                  children: S.jsxs("div", {
-                   className: h.title==="Vyrex"?"grid grid-cols-1 gap-2":"grid grid-cols-2 gap-2",
+                   className: h.showGithub===!1?"grid grid-cols-1 gap-2":"grid grid-cols-2 gap-2",
                    children: [
 
                      S.jsxs("button", {
@@ -22518,7 +22639,7 @@ function tO() {
                         }), " View Project"]
                       }),
                      
-                     h.title!=="Vyrex" && S.jsxs("button", {
+                     h.showGithub!==!1 && S.jsxs("button", {
                      onClick: () => window.open('https://github.com/jad-jkh?tab=repositories', '_blank'),
                      className: "flex items-center justify-center py-3 bg-purple-700 text-white border-2 border-black hover:text-purple-700 hover:bg-yellow-400  font-bold text-sm uppercase transition-colors cursor-pointer",
                      "data-testid": `button-github-${h.id}`,
@@ -22834,6 +22955,104 @@ function tO() {
 				})]
 			})
 		}), S.jsx(Ac, {
+			children: expSel && S.jsxs(Ut.div, {
+				initial: {
+					opacity: 0
+				},
+				animate: {
+					opacity: 1
+				},
+				exit: {
+					opacity: 0
+				},
+				className: "fixed inset-0 z-50 flex items-center justify-center p-4",
+				onClick: () => setExpSel(null),
+				children: [S.jsx("div", {
+					className: "absolute inset-0 bg-black/80"
+				}), S.jsxs(Ut.div, {
+					initial: {
+						scale: .9,
+						opacity: 0
+					},
+					animate: {
+						scale: 1,
+						opacity: 1
+					},
+					exit: {
+						scale: .9,
+						opacity: 0
+					},
+					onClick: h => h.stopPropagation(),
+					className: "relative bg-white text-black border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full max-h-[90vh] overflow-y-auto",
+					style: {
+						maxWidth: "56rem"
+					},
+					children: [S.jsx("button", {
+						onClick: () => setExpSel(null),
+						className: "absolute top-4 right-4 w-10 h-10 bg-black text-white border-2 border-black hover:bg-red-500 flex items-center justify-center z-10",
+						"aria-label": "Close",
+						children: S.jsx(lf, {
+							className: "w-6 h-6"
+						})
+					}), S.jsxs("div", {
+						className: "flex items-start gap-4 p-6 border-b-4 border-black",
+						style: {
+							paddingRight: "4.5rem"
+						},
+						children: [expSel.logo && S.jsx("img", {
+							src: expSel.logo,
+							alt: expSel.company,
+							className: "object-contain shrink-0",
+							style: {
+								height: "3.5rem",
+								width: "auto",
+								maxWidth: "8rem"
+							}
+						}), S.jsxs("div", {
+							className: "flex-1 min-w-0",
+							children: [S.jsx("h2", {
+								className: "text-2xl md:text-3xl font-black leading-tight break-words",
+								children: expSel.company
+							}), S.jsx("p", {
+								className: "font-bold text-gray-600 font-[family-name:var(--font-body)] text-sm md:text-lg break-words",
+								children: expSel.role
+							}), S.jsx("p", {
+								className: "text-gray-500 font-[family-name:var(--font-body)] text-sm mt-1",
+								children: [expSel.location, expSel.year].filter(Boolean).join("  |  ")
+							})]
+						})]
+					}), S.jsx(Gallery, {
+						items: expSel.media ?? [],
+						alt: expSel.company,
+						logo: expSel.logo
+					}, expSel.id), S.jsxs("div", {
+						className: "p-6",
+						children: [S.jsx("h3", {
+							className: "font-bold text-sm uppercase tracking-wide mb-3 text-gray-500",
+							children: "What I Did"
+						}), S.jsx("ul", {
+							className: "space-y-2 text-lg",
+							children: (expSel.details ?? expSel.description.split("\n").map(l => l.replace(/^•\s*/, ""))).map((h, idx) => S.jsxs("li", {
+								className: "flex items-start gap-2",
+								children: [S.jsx("span", {
+									className: "font-bold",
+									style: {
+										color: "#8a0a28"
+									},
+									children: "→"
+								}), S.jsx("span", {
+									children: h
+								})]
+							}, idx))
+						}), S.jsx("button", {
+							onClick: () => setExpSel(null),
+							className: "mt-6 w-full py-3 bg-black text-white border-2 border-black hover:bg-red-800 font-bold uppercase transition-colors",
+							children: "Close"
+						})]
+					})]
+				})]
+			})
+		}), S.jsx(Ac, {
 			children: i && S.jsxs(Ut.div, {
 				initial: {
 					opacity: 0
@@ -22863,6 +23082,9 @@ function tO() {
 					},
 					onClick: h => h.stopPropagation(),
 					className: "relative bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] max-w-2xl w-full max-h-[90vh] overflow-y-auto",
+					style: i.media?.length ? {
+						maxWidth: "56rem"
+					} : void 0,
 					children: [S.jsx("button", {
 						onClick: () => o(null),
 						className: "absolute top-4 right-4 w-10 h-10 bg-black text-white border-2 border-black hover:bg-red-500 flex items-center justify-center z-10",
@@ -22870,18 +23092,41 @@ function tO() {
 						children: S.jsx(lf, {
 							className: "w-6 h-6"
 						})
-					}), i.image && S.jsx("div", {
-						className: `w-full h-64 overflow-hidden ${i.title==="Vyrex"?"bg-white p-6":"bg-gray-900"}`,
+					}), i.media?.length ? S.jsxs(S.Fragment, {
+						children: [S.jsxs("div", {
+							className: "flex items-center gap-4 p-6 border-b-4 border-black",
+							style: {
+								paddingRight: "4.5rem"
+							},
+							children: [i.image && S.jsx("img", {
+								src: i.image,
+								alt: i.title,
+								className: "object-contain shrink-0",
+								style: {
+									height: "3.5rem",
+									width: "auto",
+									maxWidth: "8rem"
+								}
+							}), (i.modalTitle ?? i.title) && S.jsx("h2", {
+								className: "text-2xl md:text-3xl font-black leading-tight break-words",
+								children: i.modalTitle ?? i.title
+							})]
+						}), S.jsx(Gallery, {
+							items: i.media,
+							alt: i.title
+						}, i.id)]
+					}) : i.image && S.jsx("div", {
+						className: `w-full h-64 overflow-hidden ${i.logoImage?"bg-white p-6":"bg-gray-900"}`,
 						children: S.jsx("img", {
 							src: i.image,
 							alt: i.title,
-							className: `w-full h-full ${i.title==="Vyrex"?"object-contain":"object-cover"}`
+							className: `w-full h-full ${i.logoImage?"object-contain":"object-cover"}`
 						})
 					}), S.jsxs("div", {
 						className: "p-6",
-						children: [S.jsx("h2", {
+						children: [!i.media?.length && (i.modalTitle ?? i.title) && S.jsx("h2", {
 							className: "text-2xl md:text-3xl font-black mb-4",
-							children: i.title
+							children: i.modalTitle ?? i.title
 						}), S.jsx("p", {
 							className: "text-lg text-gray-700 mb-6",
 							children: i.description
@@ -22889,7 +23134,7 @@ function tO() {
 							className: "mb-6",
 							children: [S.jsx("h3", {
 								className: "font-bold text-sm uppercase tracking-wide mb-3 text-gray-500",
-								children: "Technologies Used"
+								children: "Skills Applied"
 							}), S.jsx("div", {
 								className: "flex flex-wrap gap-2",
 								children: i.techStack?.map(h => S.jsx("span", {
