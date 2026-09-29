@@ -21987,7 +21987,20 @@ function Gallery({
 		})]
 	})
 }
+const swanShape = (() => {
+	const h = g => `polygon(${g.map(v => `${v[0]}% ${v[1]}%`).join(", ")})`;
+	return {
+		sheet: h([[100, 0], [92, 0], [84, 0], [76, 0], [68, 0], [60, 0], [52, 0], [40, 0], [28, 0], [0, 0], [0, 35], [0, 70], [0, 100], [50, 100], [100, 100], [100, 75], [100, 50], [100, 25]]),
+		half: h([[100, 25], [92, 25], [84, 25], [76, 25], [68, 25], [60, 25], [52, 25], [40, 25], [28, 25], [0, 25], [0, 42], [0, 58], [0, 75], [50, 75], [100, 75], [100, 62], [100, 50], [100, 38]]),
+		triangle: h([[76, 55.2], [72, 49.2], [67, 42.5], [62, 37.2], [56, 28.2], [53, 23.8], [50, 20.0], [40, 34.2], [30, 50.0], [20, 65.0], [15, 72.5], [10, 80.0], [30, 80.0], [50, 80.0], [90, 80.0], [85, 72.5], [82, 65.8], [79, 59.8]]),
+		swan: h([[98, 22], [89, 13], [81, 8], [73, 13], [73, 25], [70, 35], [62, 46], [58, 6], [45, 42], [20, 12], [34, 52], [8, 58], [30, 74], [62, 76], [84, 58], [88, 46], [84, 35], [85, 26]]),
+		flap: h([[98, 22], [89, 13], [81, 8], [73, 13], [73, 25], [70, 35], [62, 46], [70, 34], [48, 47], [18, 44], [34, 52], [8, 58], [30, 74], [62, 76], [84, 58], [88, 46], [84, 35], [85, 26]])
+	}
+})();
 const ea = ["./images/profile-pixel-jad.png", "./images/jad_w_pro.jpg", "./images/jad_w_spain.jpg"];
+ea.forEach(h => {
+	new Image().src = h
+});
 
 function tO() {
 	const [e, n] = T.useState(0), [i, o] = T.useState(null), [expSel, setExpSel] = T.useState(null), {
@@ -22064,28 +22077,34 @@ function tO() {
 							onClick: c,
 							"data-testid": "profile-image-carousel",
 							children: [S.jsx(Ac, {
-								mode: "wait",
+								initial: !1,
 								children: S.jsx(Ut.img, {
 									src: ea[e],
 									alt: "Jad K. Haddad",
-									className: "w-full h-full object-cover",
+									className: "absolute inset-0 w-full h-full object-cover",
 									style: {
-										objectPosition: "center 25%"
-									},
-									initial: {
-										opacity: 0,
-										x: 50
-									},
-									animate: {
-										opacity: 1,
-										x: 0
+										objectPosition: "center 25%",
+										clipPath: swanShape.sheet,
+										willChange: "clip-path, transform, filter"
 									},
 									exit: {
-										opacity: 0,
-										x: -50
-									},
-									transition: {
-										duration: .3
+										zIndex: 5,
+										clipPath: [swanShape.sheet, swanShape.half, swanShape.triangle, swanShape.swan, swanShape.flap, swanShape.swan, swanShape.flap, swanShape.swan],
+										x: ["0%", "0%", "0%", "0%", "10%", "30%", "55%", "90%"],
+										y: ["0%", "0%", "0%", "0%", "-6%", "-20%", "-38%", "-65%"],
+										scale: [1, 1, .95, .75, .65, .55, .45, .35],
+										rotate: [0, 0, 0, 0, -4, -8, -12, -16],
+										filter: ["brightness(1)", "brightness(0.8)", "brightness(0.7)", "brightness(0.95)", "brightness(1)", "brightness(1)", "brightness(1)", "brightness(1)"],
+										transition: {
+											default: {
+												duration: 2.6,
+												times: [0, .15, .3, .45, .58, .7, .82, 1],
+												ease: "easeInOut"
+											},
+											zIndex: {
+												duration: 0
+											}
+										}
 									}
 								}, e)
 							}), S.jsx("div", {
