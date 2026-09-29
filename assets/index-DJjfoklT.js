@@ -21905,7 +21905,7 @@ function Gallery({
 		children: [S.jsx("div", {
 			className: `relative ${o?"bg-white":"bg-gray-900"} border-b-4 border-black overflow-hidden`,
 			style: {
-				aspectRatio: "16 / 9"
+				height: "min(45vh, 50vw)"
 			},
 			children: c ? S.jsxs(S.Fragment, {
 				children: [["mp4", "webm", "mov"].includes(ext) ? S.jsx("video", {
