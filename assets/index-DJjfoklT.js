@@ -21997,7 +21997,7 @@ const swanShape = (() => {
 		flap: h([[98, 22], [89, 13], [81, 8], [73, 13], [73, 25], [70, 35], [62, 46], [70, 34], [48, 47], [18, 44], [34, 52], [8, 58], [30, 74], [62, 76], [84, 58], [88, 46], [84, 35], [85, 26]])
 	}
 })();
-const ea = ["./images/profile-pixel-jad.png", "./images/jad_w_pro.jpg", "./images/jad_w_spain.jpg"];
+const ea = ["./images/jad_w_pro.jpg", "./images/profile-pixel-jad.png", "./images/jad_w_spain.jpg"];
 ea.forEach(h => {
 	new Image().src = h
 });
