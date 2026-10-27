@@ -51,32 +51,33 @@
             right: 30px;
             z-index: 9998;
             transform-origin: bottom right;
-            animation: expandFromButton 0.25s ease-out forwards;
+            animation: expandFromButton 0.34s cubic-bezier(.2, .8, .2, 1) both;
         }
 
         .chat-container.closing {
-            animation: collapseToButton 0.25s ease-in forwards;
+            animation: collapseToButton 0.2s cubic-bezier(.4, 0, 1, 1) both;
         }
 
+        /* Open: fade in while rising slightly and settling from 94% to full size (no pop from zero) */
         @keyframes expandFromButton {
             0% {
                 opacity: 0;
-                transform: scale(0);
+                transform: translateY(14px) scale(.94);
             }
             100% {
                 opacity: 1;
-                transform: scale(1);
+                transform: none;
             }
         }
 
         @keyframes collapseToButton {
             0% {
                 opacity: 1;
-                transform: scale(1);
+                transform: none;
             }
             100% {
                 opacity: 0;
-                transform: scale(0);
+                transform: translateY(10px) scale(.96);
             }
         }
 
@@ -118,13 +119,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
+            transition: background 0.15s;
             color: var(--text-dark);
         }
 
         .close-button:hover {
             background: var(--accent-yellow);
-            transform: rotate(90deg);
         }
 
         /* Navigation Menu */
@@ -461,7 +461,7 @@
     </style>
 </head>
 <body>
-    <div class="chat-container" id="chatContainer">
+    <div class="chat-container" id="chatContainer" style="display: none;">
         <div class="chat-header">
             <button class="close-button" id="closeButton" onclick="closeChat()">✕</button>
             <h1>JadGPT</h1>
@@ -656,8 +656,11 @@ CERTIFICATIONS:
                 container.style.display = 'none';
                 container.classList.remove('closing');
                 window.parent.postMessage('closeChat', '*');
-            }, 250);
+            }, 200);
         }
+
+        // Opened directly (not embedded in the site): show the chat straight away
+        if (!/widget=true/.test(location.search)) openChat();
 
         // Esc closes the chat when focus is inside it
         document.addEventListener('keydown', function(event) {
@@ -666,7 +669,11 @@ CERTIFICATIONS:
 
         function openChat() {
             const container = document.getElementById('chatContainer');
+            container.classList.remove('closing');
+            container.style.animation = 'none';
             container.style.display = 'flex';
+            void container.offsetWidth;  // restart the open animation every time
+            container.style.animation = '';
         }
 
         window.addEventListener('message', function(event) {

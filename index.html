@@ -305,9 +305,8 @@
             widget.style.display = 'block';
             button.style.display = 'none';
             
-            setTimeout(() => {
-                widget.contentWindow.postMessage(mobile ? 'openChatMobile' : 'openChat', '*');
-            }, 50);
+            // tell the chat to open just after the iframe becomes visible, so the animation starts smoothly
+            setTimeout(() => widget.contentWindow.postMessage(mobile ? 'openChatMobile' : 'openChat', '*'), 20);
         }
 
         // Esc closes the chat
