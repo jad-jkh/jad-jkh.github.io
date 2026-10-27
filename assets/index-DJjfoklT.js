@@ -21665,6 +21665,84 @@ function JadSimCard() {
 	})
 }
 
+const JADSIM_DEMOS = [
+	{ label: "Inverting amplifier", src: "./images/jadsim/demo-1.mp4", poster: "./images/jadsim/demo-1.webp" },
+	{ label: "Half-wave rectifier", src: "./images/jadsim/demo-2.mp4", poster: "./images/jadsim/demo-2.webp" },
+	{ label: "Transistor LED switch", src: "./images/jadsim/demo-3.mp4", poster: "./images/jadsim/demo-3.webp" }
+];
+
+function JadSimSection() {
+	const [e, n] = T.useState(0), i = T.useRef(null);
+	// play the videos only while the section is on screen
+	T.useEffect(() => {
+		const o = i.current;
+		if (!o || !("IntersectionObserver" in window)) return;
+		const a = new IntersectionObserver(([u]) => {
+			o.querySelectorAll("video").forEach(c => u.isIntersecting ? c.play().catch(() => {}) : c.pause())
+		}, { threshold: .15 });
+		return a.observe(o), () => a.disconnect()
+	}, []);
+	const o = JADSIM_DEMOS[e];
+	return S.jsxs("section", {
+		id: "jadsim",
+		ref: i,
+		className: "jadsim-section",
+		children: [S.jsx("video", {
+			className: "jadsim-section-bg",
+			src: "./images/jadsim/bg.mp4",
+			autoPlay: !0, muted: !0, loop: !0, playsInline: !0, preload: "metadata",
+			"aria-hidden": !0
+		}), S.jsx("div", { className: "jadsim-section-tint", "aria-hidden": !0 }),
+		S.jsx("div", { className: "jadsim-section-waves", "aria-hidden": !0 }),
+		S.jsxs("div", {
+			className: "jadsim-section-inner",
+			children: [S.jsxs("div", {
+				className: "jadsim-section-head",
+				children: [S.jsxs("div", {
+					className: "jadsim-section-brand",
+					children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "" }), S.jsx("h2", { children: "jadSim" })]
+				}), S.jsx("p", { className: "jadsim-section-tag", children: "the free online circuit simulator" }),
+				S.jsx("p", {
+					className: "jadsim-section-pitch",
+					children: "When online support for Multisim ended, I built my own. Drop in parts, wire them up, press run, and watch real waveforms on the scope, all in your browser."
+				})]
+			}), S.jsxs("div", {
+				className: "jadsim-window",
+				children: [S.jsxs("div", {
+					className: "jadsim-window-bar",
+					children: [S.jsx("span", { className: "jadsim-window-dots", children: [0, 1, 2].map(u => S.jsx("i", {}, u)) }), S.jsx("span", { children: "jadSim \u2014 " + o.label })]
+				}), S.jsx("video", {
+					className: "jadsim-window-video",
+					src: o.src,
+					poster: o.poster,
+					autoPlay: !0, muted: !0, loop: !0, playsInline: !0, preload: "metadata",
+					"aria-label": "jadSim running the " + o.label + " example"
+				}, o.src), S.jsx("div", {
+					className: "jadsim-window-tabs",
+					role: "tablist",
+					children: JADSIM_DEMOS.map((u, c) => S.jsx("button", {
+						role: "tab",
+						"aria-selected": c === e,
+						className: c === e ? "is-active" : "",
+						onClick: () => n(c),
+						children: u.label
+					}, u.label))
+				})]
+			}), S.jsx("ul", {
+				className: "jadsim-section-chips",
+				children: ["No install", "Runs in your browser", "Op-amps, diodes, BJTs & MOSFETs", "Scope, function gen & multimeter", "Save & open .jsim files", "54 known-answer tests passing"].map(u => S.jsx("li", { children: u }, u))
+			}), S.jsxs("a", {
+				href: "./jadsim/",
+				target: "_blank",
+				rel: "noopener noreferrer",
+				className: "jadsim-section-cta",
+				"data-testid": "button-jadsim-section",
+				children: [S.jsx("span", { className: "jadsim-desktop", children: "Try jadSim now \u25B6" }), S.jsx("span", { className: "jadsim-phone", children: "Try jadSim on a computer \u25B6" })]
+			})]
+		})]
+	})
+}
+
 function Js({
 	title: e,
 	subtitle: n,
@@ -22918,42 +22996,7 @@ function tO() {
 			})
 		}), 
                
-               S.jsx("section", {
-			id: "jadsim",
-			className: "jadsim-section",
-			children: S.jsxs("div", {
-				className: "jadsim-section-inner",
-				children: [S.jsxs("div", {
-					className: "jadsim-section-copy",
-					children: [S.jsxs("div", {
-						className: "jadsim-section-brand",
-						children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "" }), S.jsx("h2", { children: "jadSim" })]
-					}), S.jsx("p", {
-						className: "jadsim-section-tag",
-						children: "the free online circuit simulator"
-					}), S.jsx("p", {
-						children: "When online support for Multisim ended, I built my own. jadSim solves real circuits right in your browser: resistors, capacitors, diodes, transistors and op-amps, with a function generator, oscilloscope and multimeter to probe them."
-					}), S.jsx("ul", {
-						className: "jadsim-section-chips",
-						children: ["No install", "Runs in your browser", "Save & open .jsim files", "54 known-answer tests passing"].map(t => S.jsx("li", { children: t }, t))
-					}), S.jsxs("a", {
-						href: "./jadsim/",
-						target: "_blank",
-						rel: "noopener noreferrer",
-						className: "jadsim-section-cta",
-						"data-testid": "button-jadsim-section",
-						children: [S.jsx("span", { className: "jadsim-desktop", children: "Try jadSim now \u25B6" }), S.jsx("span", { className: "jadsim-phone", children: "Try jadSim on a computer \u25B6" })]
-					})]
-				}), S.jsx("a", {
-					href: "./jadsim/",
-					target: "_blank",
-					rel: "noopener noreferrer",
-					className: "jadsim-section-shot",
-					"aria-label": "Open jadSim",
-					children: S.jsx("img", { src: "./images/jadsim-preview.webp", alt: "jadSim running an inverting amplifier with live oscilloscope readings", loading: "lazy", width: 1190, height: 560 })
-				})]
-			})
-		}), 
+               S.jsx(JadSimSection, {}), 
                S.jsx("footer", {
 			className: "bg-black text-white py-12 text-center border-t-4 border-accent",
 			children: S.jsxs("div", {
