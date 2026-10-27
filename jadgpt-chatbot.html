@@ -40,6 +40,7 @@
             width: 100%;
             max-width: 450px;
             height: 700px;
+            max-height: calc(100vh - 42px);
             background: white;
             border: 6px solid var(--border-thick);
             box-shadow: 12px 12px 0px var(--border-thick);
@@ -405,11 +406,11 @@
             box-shadow: 3px 3px 0px var(--border-thick);
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
+        /* Phone layout: switched on by the parent page (the iframe itself is narrow on desktop too) */
+        body.m {
             .chat-container {
                 width: calc(100vw - 20px);
-                height: 70vh;
+                height: calc(100vh - 20px);
                 max-width: calc(100vw - 20px);
                 bottom: 10px;
                 right: 10px;
@@ -658,14 +659,22 @@ CERTIFICATIONS:
             }, 250);
         }
 
+        // Esc closes the chat when focus is inside it
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') closeChat();
+        });
+
         function openChat() {
             const container = document.getElementById('chatContainer');
             container.style.display = 'flex';
         }
 
         window.addEventListener('message', function(event) {
-            if (event.data === 'openChat') {
+            if (event.data === 'openChat' || event.data === 'openChatMobile') {
+                document.body.classList.toggle('m', event.data === 'openChatMobile');
                 openChat();
+            } else if (event.data === 'requestClose') {
+                closeChat();
             }
         });
 

@@ -210,11 +210,25 @@
 
       /* 16. Skills on phones: compact chips that wrap instead of one long full-width stack */
       @media (max-width: 767px) {
-        #skills .flex.flex-col[style*="gap"] { flex-direction: row; flex-wrap: wrap; gap: .45rem !important; }
-        #skills .flex.flex-col[style*="gap"] > span { display: inline-block; width: auto; padding: .35rem .6rem; font-size: 12.5px; line-height: 1.3; box-shadow: 2px 2px 0 #000; }
-        #skills .bg-white.p-6 { padding: 1.25rem; }
-        #skills .bg-yellow-50 .text-lg { font-size: 1rem; }
+        #skills { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+        #skills .mb-12 { margin-bottom: 1.75rem; }
+        #skills .grid { gap: 1rem !important; }
+        #skills h3 { font-size: 1rem; margin-bottom: .6rem; padding-bottom: .35rem; border-bottom-width: 2px; }
+        #skills .flex.flex-col[style*="gap"] { flex-direction: row; flex-wrap: wrap; gap: .3rem !important; }
+        #skills .flex.flex-col[style*="gap"] > span { display: inline-block; width: auto; padding: .2rem .45rem; font-size: 11px; line-height: 1.25; border-width: 1.5px; }
+        #skills .bg-white.p-6 { padding: .9rem; border-width: 3px; box-shadow: 5px 5px 0 rgba(0,0,0,.2); }
+        #skills .bg-yellow-50 { padding: .55rem .75rem; border-width: 3px; box-shadow: 3px 3px 0 rgba(0,0,0,.2); }
+        #skills .bg-yellow-50 .text-lg { font-size: .85rem; line-height: 1.3; }
       }
+
+      /* 17. Phones/touch: no stuck hover lifts or shifts after tapping a button */
+      @media (hover: none) {
+        * { -webkit-tap-highlight-color: transparent; }
+        *:hover { --tw-translate-x: 0 !important; --tw-translate-y: 0 !important; --tw-rotate: 0 !important; --tw-scale-x: 1 !important; --tw-scale-y: 1 !important; }
+        .jadsim-card:hover, .jadsim-section-cta:hover, .jadsim-row a:hover { transform: none !important; }
+        .jadgpt-chat-button:hover { animation: pulse 2s infinite; background: linear-gradient(135deg, #9945FF 0%, #FF6EC7 100%); }
+      }
+      .jadsim-arrow { margin-left: .7rem; flex-shrink: 0; }
 
       /* 9. Keyboard users: a clear focus ring on every link and button */
       a:focus-visible, button:focus-visible { outline: 3px solid #0ea5e9 !important; outline-offset: 3px; }
@@ -233,7 +247,7 @@
     <iframe 
         id="jadgpt-widget"
         src="./jadgpt-chatbot.html?widget=true" 
-        style="position: fixed; bottom: 0; right: 0; width: 100%; height: 100%; border: none; pointer-events: none; z-index: 9999; display: none;"
+        style="position: fixed; bottom: 0; right: 0; width: 500px; height: min(760px, 100vh); border: none; z-index: 9999; display: none;"
     ></iframe>
 
     <style>
@@ -254,13 +268,12 @@
             box-shadow: 6px 6px 0px #000, 0 0 30px rgba(153, 69, 255, 0.6);
             z-index: 9998;
             animation: pulse 2s infinite;
-            rotate: 0deg;
-            transition: rotate 0.4s ease, scale 0.4s ease;
         }
 
+        /* Hover: just turn yellow, no rotation or motion */
         .jadgpt-chat-button:hover {
-            animation: pulse-hover 2s infinite;
-            rotate: -5deg;
+            animation: none;
+            background: #facc15;
         }
 
         @keyframes pulse {
@@ -268,10 +281,6 @@
             50% { scale: 1.05; }
         }
 
-        @keyframes pulse-hover {
-            0%, 100% { scale: 1.05; }
-            50% { scale: 1.2; }
-        }
     </style>
 
     <button class="jadgpt-chat-button" onclick="toggleJadGPT()" style="flex-direction: column;">
@@ -289,15 +298,23 @@
         function toggleJadGPT() {
             const widget = document.getElementById('jadgpt-widget');
             const button = document.querySelector('.jadgpt-chat-button');
-            
+            // The iframe only covers the chat window, so the rest of the page stays clickable
+            const mobile = window.innerWidth <= 768;
+            widget.style.width = mobile ? '100vw' : '500px';
+            widget.style.height = mobile ? 'calc(70vh + 20px)' : 'min(760px, 100vh)';
             widget.style.display = 'block';
-            widget.style.pointerEvents = 'all';
             button.style.display = 'none';
             
             setTimeout(() => {
-                widget.contentWindow.postMessage('openChat', '*');
+                widget.contentWindow.postMessage(mobile ? 'openChatMobile' : 'openChat', '*');
             }, 50);
         }
+
+        // Esc closes the chat
+        document.addEventListener('keydown', function(event) {
+            const widget = document.getElementById('jadgpt-widget');
+            if (event.key === 'Escape' && widget.style.display === 'block') widget.contentWindow.postMessage('requestClose', '*');
+        });
 
         window.addEventListener('message', function(event) {
             if (event.data === 'closeChat') {
@@ -305,7 +322,6 @@
                 const button = document.querySelector('.jadgpt-chat-button');
                 
                 widget.style.display = 'none';
-                widget.style.pointerEvents = 'none';
                 button.style.display = 'flex';
             }
         });

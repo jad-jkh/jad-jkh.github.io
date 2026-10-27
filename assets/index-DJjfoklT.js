@@ -21652,6 +21652,7 @@ function JadSimCard() {
 		rel: "noopener noreferrer",
 		className: "jadsim-card",
 		"data-testid": "card-jadsim",
+		onClick: ev => { if (window.innerWidth < 768) { ev.preventDefault(); goToSection("jadsim"); } },
 		children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "" }), S.jsxs("span", {
 			children: [S.jsx("b", { className: "jadsim-desktop", children: "Try jadSim now!" }), S.jsx("b", { className: "jadsim-phone", children: "Try jadSim on a computer!" }), S.jsx("small", { children: "the free online circuit simulator" })]
 		})]
@@ -21699,7 +21700,7 @@ function JadSimSection() {
 					rel: "noopener noreferrer",
 					className: "jadsim-section-cta",
 					"data-testid": "button-jadsim-section",
-					children: [S.jsx("span", { className: "jadsim-desktop", children: "Try jadSim now \u25B6" }), S.jsx("span", { className: "jadsim-phone", children: "Try jadSim on a computer \u25B6" })]
+					children: [S.jsx("span", { className: "jadsim-desktop", children: "Try jadSim now" }), S.jsx("span", { className: "jadsim-phone", children: "Try jadSim on a computer" }), S.jsx("svg", { className: "jadsim-arrow", viewBox: "0 0 10 12", width: 10, height: 12, "aria-hidden": !0, children: S.jsx("path", { d: "M0 0L10 6L0 12Z", fill: "currentColor" }) })]
 				})]
 			}), S.jsx("div", {
 				className: "jadsim-demo",
@@ -22098,6 +22099,13 @@ function tO() {
 		};
 		return document.addEventListener("keydown", h), () => document.removeEventListener("keydown", h)
 	}, [expSel]);
+	T.useEffect(() => {
+		if (!i) return;
+		const h = g => {
+			g.key === "Escape" && o(null)
+		};
+		return document.addEventListener("keydown", h), () => document.removeEventListener("keydown", h)
+	}, [i]);
 	const {
 		data: f
 	} = $_(), {
