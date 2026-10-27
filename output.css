@@ -1607,25 +1607,10 @@ video {
   background-image: radial-gradient(#fff 1px,transparent 1px);
 }
 
-.bg-\[url\(\'\/images\/bg-cabin-lake\.png\'\)\] {
-  background-image: url('/images/bg-cabin-lake.png');
-}
 
-.bg-\[url\(\'\/images\/bg-cherry-blossom\.png\'\)\] {
-  background-image: url('/images/bg-cherry-blossom.png');
-}
 
-.bg-\[url\(\'\/images\/bg-retro-city\.png\'\)\] {
-  background-image: url('/images/bg-retro-city.png');
-}
 
-.bg-\[url\(\'\/images\/bg-tropical-pixel\.png\'\)\] {
-  background-image: url('/images/bg-tropical-pixel.png');
-}
 
-.bg-\[url\(\'\/images\/hero-game\.png\'\)\] {
-  background-image: url('/images/hero-game.png');
-}
 
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));

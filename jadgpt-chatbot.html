@@ -630,7 +630,8 @@ TECHNICAL SKILLS:
 - Power / Protection: SEL and Basler protective relays, AcSELerator QuickSet, relay configuration and testing (Doble, Arbiter, Omicron), capacitor-bank and transformer protection, ANSI device numbers
 - Programming: C/C++, Python, Bash, JavaScript, ARM Assembly, Java, HTML, MATLAB, Verilog
 - Research: patent and prior-art research, BOM development and sourcing, TAM/SAM/SOM market modeling, competitive teardown analysis
-- Software: KiCad, LTspice/Multisim, Solid Edge, Keil µVision, ProjectWise, Wireshark, Quartus, Excel
+- Software: KiCad, LTspice/Multisim, Solid Edge, Keil µVision, STM32CubeIDE/CubeProgrammer, Arduino IDE, ProjectWise, Wireshark, Quartus, Cisco Packet Tracer, Inkscape, Vite/Vitest, VS Code, Git/GitHub, Excel
+- Web: TypeScript/React, CSS/Tailwind, Node.js/npm, Google Apps Script (built jadSim and this portfolio site)
 
 CERTIFICATIONS:
 - Lean Six Sigma Yellow Belt (Texas A&M)
@@ -729,14 +730,15 @@ CERTIFICATIONS:
                 btn.className = 'sub-menu-button';
                 btn.textContent = label;
                 btn.onclick = () => {
+                    // open right away, inside the click, so the browser doesn't block the new tab
+                    if (yes) window.open('/jadsim/', '_blank', 'noopener');
                     choices.remove();
                     addMessage(label, true);
                     showTypingIndicator();
                     setTimeout(() => {
                         removeTypingIndicator();
                         if (yes) {
-                            addMessage('Sure! Taking you there now.', false);
-                            setTimeout(() => { window.top.location.href = '/jadsim/'; }, 1200);
+                            addMessage('Sure! I opened jadSim in a new tab for you.', false);
                         } else {
                             addMessage('No problem! It\'s always one click away with the jadSim button up top.', false);
                         }

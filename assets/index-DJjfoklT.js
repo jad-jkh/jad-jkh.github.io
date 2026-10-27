@@ -22066,15 +22066,15 @@ function tO() {
 			}), S.jsxs("div", {
 				className: "absolute inset-0 z-0 pointer-events-none",
 				children: [S.jsx("div", {
-					className: "absolute inset-0 bg-[url('/images/hero-game.png')] bg-cover bg-center opacity-20"
+					className: "absolute inset-0 bg-cover bg-center opacity-20"
 				}), S.jsx("div", {
-					className: "absolute inset-0 bg-[url('/images/bg-cabin-lake.png')] bg-cover bg-center opacity-0 animate-fade"
+					className: "absolute inset-0 bg-cover bg-center opacity-0 animate-fade"
 				}), S.jsx("div", {
-					className: "absolute inset-0 bg-[url('/images/bg-cherry-blossom.png')] bg-cover bg-center opacity-0 animate-fade [animation-delay:4s]"
+					className: "absolute inset-0 bg-cover bg-center opacity-0 animate-fade [animation-delay:4s]"
 				}), S.jsx("div", {
-					className: "absolute inset-0 bg-[url('/images/bg-retro-city.png')] bg-cover bg-center opacity-0 animate-fade [animation-delay:8s]"
+					className: "absolute inset-0 bg-cover bg-center opacity-0 animate-fade [animation-delay:8s]"
 				}), S.jsx("div", {
-					className: "absolute inset-0 bg-[url('/images/bg-tropical-pixel.png')] bg-cover bg-center opacity-0 animate-fade [animation-delay:12s]"
+					className: "absolute inset-0 bg-cover bg-center opacity-0 animate-fade [animation-delay:12s]"
 				}), S.jsx("div", {
 					className: "absolute inset-0 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px] opacity-10"
 				})]
@@ -22918,6 +22918,42 @@ function tO() {
 			})
 		}), 
                
+               S.jsx("section", {
+			id: "jadsim",
+			className: "jadsim-section",
+			children: S.jsxs("div", {
+				className: "jadsim-section-inner",
+				children: [S.jsxs("div", {
+					className: "jadsim-section-copy",
+					children: [S.jsxs("div", {
+						className: "jadsim-section-brand",
+						children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "" }), S.jsx("h2", { children: "jadSim" })]
+					}), S.jsx("p", {
+						className: "jadsim-section-tag",
+						children: "the free online circuit simulator"
+					}), S.jsx("p", {
+						children: "When online support for Multisim ended, I built my own. jadSim solves real circuits right in your browser: resistors, capacitors, diodes, transistors and op-amps, with a function generator, oscilloscope and multimeter to probe them."
+					}), S.jsx("ul", {
+						className: "jadsim-section-chips",
+						children: ["No install", "Runs in your browser", "Save & open .jsim files", "54 known-answer tests passing"].map(t => S.jsx("li", { children: t }, t))
+					}), S.jsxs("a", {
+						href: "./jadsim/",
+						target: "_blank",
+						rel: "noopener noreferrer",
+						className: "jadsim-section-cta",
+						"data-testid": "button-jadsim-section",
+						children: [S.jsx("span", { className: "jadsim-desktop", children: "Try jadSim now \u25B6" }), S.jsx("span", { className: "jadsim-phone", children: "Try jadSim on a computer \u25B6" })]
+					})]
+				}), S.jsx("a", {
+					href: "./jadsim/",
+					target: "_blank",
+					rel: "noopener noreferrer",
+					className: "jadsim-section-shot",
+					"aria-label": "Open jadSim",
+					children: S.jsx("img", { src: "./images/jadsim-preview.webp", alt: "jadSim running an inverting amplifier with live oscilloscope readings", loading: "lazy", width: 1190, height: 560 })
+				})]
+			})
+		}), 
                S.jsx("footer", {
 			className: "bg-black text-white py-12 text-center border-t-4 border-accent",
 			children: S.jsxs("div", {

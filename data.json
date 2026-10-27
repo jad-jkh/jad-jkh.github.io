@@ -163,6 +163,23 @@
     {"id": 54, "name": "MicroPython", "category": "Programming", "proficiency": 4},
     {"id": 55, "name": "KiCad", "category": "Software", "proficiency": 5},
     {"id": 56, "name": "Doble, Arbiter & Omicron Relay Test Sets", "category": "Software", "proficiency": 4},
-    {"id": 57, "name": "Git / GitHub", "category": "Software", "proficiency": 4}
+    {"id": 57, "name": "Git / GitHub", "category": "Software", "proficiency": 4},
+    {"id": 58, "name": "Mixed-Signal 4-Layer PCB Layout", "category": "Technical", "proficiency": 5},
+    {"id": 59, "name": "MOSFET Drivers, Haptics & Flyback Protection", "category": "Technical", "proficiency": 4},
+    {"id": 60, "name": "USB-C Power Input & Voltage Regulation", "category": "Technical", "proficiency": 4},
+    {"id": 61, "name": "Bench Prototyping & Board Bring-Up", "category": "Technical", "proficiency": 4},
+    {"id": 62, "name": "Microcontroller Trade Studies & Pre-Certified RF Modules", "category": "Technical", "proficiency": 4},
+    {"id": 63, "name": "Current-Injection & Insulation-Resistance Testing", "category": "Technical", "proficiency": 4},
+    {"id": 64, "name": "Embedded Firmware Development (C/C++, MicroPython)", "category": "Technical", "proficiency": 4},
+    {"id": 65, "name": "Technical Animations & Training Content (HTML/SVG)", "category": "Technical", "proficiency": 4},
+    {"id": 66, "name": "CSS / Tailwind", "category": "Programming", "proficiency": 3},
+    {"id": 67, "name": "Node.js / npm", "category": "Programming", "proficiency": 3},
+    {"id": 68, "name": "Google Apps Script", "category": "Programming", "proficiency": 3},
+    {"id": 69, "name": "STM32CubeIDE / STM32CubeProgrammer", "category": "Software", "proficiency": 4},
+    {"id": 70, "name": "Arduino IDE", "category": "Software", "proficiency": 4},
+    {"id": 71, "name": "Cisco Packet Tracer", "category": "Software", "proficiency": 3},
+    {"id": 72, "name": "Inkscape", "category": "Software", "proficiency": 3},
+    {"id": 73, "name": "Vite & Vitest", "category": "Software", "proficiency": 3},
+    {"id": 74, "name": "VS Code", "category": "Software", "proficiency": 4}
   ]
 }
