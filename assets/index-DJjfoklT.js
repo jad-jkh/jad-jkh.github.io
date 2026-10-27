@@ -22924,13 +22924,9 @@ function tO() {
 				className: "max-w-7xl mx-auto px-4",
 				children: [S.jsxs("div", {
 					className: "flex items-center justify-center gap-4 mb-8",
-					children: [S.jsx("div", {
-						className: "w-3 h-3 bg-red-500 animate-pulse rounded-full"
-					}), S.jsx("p", {
+					children: [S.jsx("p", {
 						className: "font-[family-name:var(--font-display)] text-sm",
 						children: "CONNECT WITH ME"
-					}), S.jsx("div", {
-						className: "w-3 h-3 bg-red-500 animate-pulse rounded-full"
 					})]
 				}), S.jsx("h2", {
 					className: "text-3xl font-bold mb-6",

@@ -164,6 +164,10 @@
         .exp-modal ul li { gap: .5rem; }
       }
 
+      /* 13. Performance: pause the hero scene animations while the hero is scrolled out of view (see script below) */
+      html.hero-offscreen #hero *, html.hero-offscreen #hero *::before, html.hero-offscreen #hero *::after { animation-play-state: paused !important; }
+      html.hero-offscreen #hero > div.absolute.inset-0 > div:nth-child(n) { animation-play-state: paused !important; }
+
       /* 9. Keyboard users: a clear focus ring on every link and button */
       a:focus-visible, button:focus-visible { outline: 3px solid #0ea5e9 !important; outline-offset: 3px; }
 
@@ -257,6 +261,19 @@
                 button.style.display = 'flex';
             }
         });
+    </script>
+
+    <script>
+      // Pause the hero's background animations while it's off screen; resume as soon as it scrolls back in
+      (function(){
+        // scroll events already fire at most once per frame, so this check is cheap
+        var root = document.documentElement, off = false;
+        window.addEventListener('scroll', function(){
+          var hero = document.getElementById('hero'); if (!hero) return;
+          var o = hero.getBoundingClientRect().bottom < 0;
+          if (o !== off) { off = o; root.classList.toggle('hero-offscreen', o); }
+        }, { passive: true });
+      })();
     </script>
 
     <script>
