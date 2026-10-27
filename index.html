@@ -152,6 +152,20 @@
       /* 11. Bigger, calmer checkerboard behind the whole site (was 20px squares) */
       body { background-size: 80px 80px; background-position: 0 0, 0 40px, 40px -40px, -40px 0; }
 
+      /* 12. "View Experience" popup on phones: logo above the title, no mid-word breaks, tighter spacing,
+             and nothing floating on top of it while it's open */
+      body:has(.exp-modal) .jadgpt-chat-button, body:has(.exp-modal) .hero-scroll { display: none !important; }
+      @media (max-width: 767px) {
+        .exp-modal { max-height: 92vh; }
+        .exp-modal > div.flex.items-start { flex-direction: column; gap: .75rem; padding: 1rem 3.75rem 1rem 1rem !important; }
+        .exp-modal > button[aria-label="Close"] { top: .75rem; right: .75rem; }
+        .exp-modal h2 { font-size: 16px !important; line-height: 1.45; overflow-wrap: normal !important; word-break: normal !important; }
+        .exp-modal > div.flex.items-start p { font-size: 13px; line-height: 1.4; }
+        .exp-modal > div.p-6 { padding: 1rem; }
+        .exp-modal ul { font-size: 1rem; line-height: 1.5; }
+        .exp-modal ul li { gap: .5rem; }
+      }
+
       /* 9. Keyboard users: a clear focus ring on every link and button */
       a:focus-visible, button:focus-visible { outline: 3px solid #0ea5e9 !important; outline-offset: 3px; }
 
