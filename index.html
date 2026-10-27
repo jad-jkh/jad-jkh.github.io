@@ -168,6 +168,12 @@
       html.hero-offscreen #hero *, html.hero-offscreen #hero *::before, html.hero-offscreen #hero *::after { animation-play-state: paused !important; }
       html.hero-offscreen #hero > div.absolute.inset-0 > div:nth-child(n) { animation-play-state: paused !important; }
 
+      /* 14. Project cards on phones: stack View Project / GitHub full-width so the labels never wrap */
+      @media (max-width: 767px) {
+        #projects .grid.grid-cols-2.gap-2 { grid-template-columns: 1fr; }
+        #projects .grid.gap-2 > :is(a, button) { white-space: nowrap; }
+      }
+
       /* 9. Keyboard users: a clear focus ring on every link and button */
       a:focus-visible, button:focus-visible { outline: 3px solid #0ea5e9 !important; outline-offset: 3px; }
 
