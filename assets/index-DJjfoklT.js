@@ -21577,7 +21577,7 @@ function U_() {
 					duration: 500,
 					className: "cursor-pointer group",
 					children: S.jsx("img", {
-						src: "./images/JKH_logo.PNG",
+						src: "./images/JKH_logo-sm.png",
 						alt: "JKH Logo",
 						className: `h-9 md:h-10 w-auto transition-all duration-300 border-black border-2
                 ${e?"invert-0 hover:invert":"invert hover:invert-0"} 
@@ -22445,9 +22445,9 @@ function tO() {
                       className: "flex flex-wrap justify-center",
                       children: u?.map((h, g) => {
                         const v = h.image ?? {
-                            "Smart Table Solutions": "./images/project-smart-table.png",
-                            SoilSense: "./images/project-soilsense.png",
-                            "Wi-Fi Desk Buddy": "./images/project-wifi-clock.png",
+                            "Smart Table Solutions": "./images/project-smart-table.webp",
+                            SoilSense: "./images/project-soilsense.webp",
+                            "Wi-Fi Desk Buddy": "./images/project-wifi-clock.webp",
                             Vyrex: "./images/project-vyrex.png"
                           } [h.title],
                           x = h.title === "Smart Table Solutions";
@@ -22491,7 +22491,7 @@ function tO() {
                                            children: [S.jsx("div", {
                                              className: "w-10 h-10 bg-white border-2 border-black shadow-md flex items-center justify-center cursor-pointer",
                                              children: S.jsx("img", {
-                                               src: "./images/JKH_white.PNG",
+                                               src: "./images/JKH_white-sm.png",
                                                alt: "JKH Experience",
                                                className: "w-10 h-10 object-contain"
                                              })
