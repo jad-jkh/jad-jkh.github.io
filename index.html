@@ -173,56 +173,38 @@
         #projects .grid.gap-2 > :is(a, button) { white-space: nowrap; }
       }
 
-      /* 15. jadSim product section above the footer: demo footage under a jadSim-blue tint, drifting sine waves,
-             a big app window playing real recordings with tabs, black pixel borders and hard shadows */
-      .jadsim-section { position: relative; overflow: hidden; border-top: 4px solid #000; padding: 6rem 1rem 5.5rem; color: #fff; min-height: 100vh; display: flex; align-items: center; }
+      /* 15. jadSim product section above the footer: demo footage under a jadSim-blue tint,
+             pitch on the left, all three recorded demos playing small on the right */
+      .jadsim-section { position: relative; overflow: hidden; border-top: 4px solid #000; padding: 6rem 1rem; color: #fff; }
       .jadsim-section-bg { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; filter: blur(3px) saturate(1.2); }
       .jadsim-section-tint { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(14,165,233,.9) 0%, rgba(2,132,199,.9) 55%, rgba(3,105,161,.94) 100%); }
-      .jadsim-section-waves { position: absolute; inset: 0; pointer-events: none; opacity: .9;
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Cg fill='none' stroke-width='3'%3E%3Cpath stroke='%23ffffff' stroke-opacity='.35' d='M0 100 C50 40 150 40 200 100 S350 160 400 100'/%3E%3Cpath stroke='%23fde047' stroke-opacity='.45' d='M0 100 C50 150 150 150 200 100 S350 50 400 100'/%3E%3C/g%3E%3C/svg%3E") 0 -60px / 400px 200px repeat-x, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Cpath fill='none' stroke='%237dd3fc' stroke-opacity='.5' stroke-width='3' d='M0 100 C37 60 112 60 150 100 S262 140 300 100'/%3E%3C/svg%3E") 0 calc(100% + 60px) / 300px 200px repeat-x;
-        animation: jadsim-waves 12s linear infinite; }
-      @keyframes jadsim-waves { to { background-position: 400px -60px, -300px calc(100% + 60px); } }
-      .jadsim-section-inner { position: relative; width: 100%; max-width: 68rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
-      .jadsim-section-brand { display: flex; align-items: center; justify-content: center; gap: 1.25rem; }
-      .jadsim-section-brand img { width: 84px; height: 84px; border: 4px solid #000; border-radius: 18px; box-shadow: 6px 6px 0 #000; }
+      .jadsim-section-inner { position: relative; max-width: 74rem; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: center; }
+      .jadsim-section-brand { display: flex; align-items: center; gap: 1.1rem; }
+      .jadsim-section-brand img { width: 76px; height: 76px; border: 4px solid #000; border-radius: 16px; box-shadow: 6px 6px 0 #000; }
       .jadsim-section-brand h2 {
-        font-size: clamp(2.75rem, 7vw, 5.25rem); text-transform: none; color: #fff; letter-spacing: 0;
+        font-size: clamp(2.6rem, 5vw, 4.5rem); text-transform: none; color: #fff; letter-spacing: 0;
         -webkit-text-stroke: 4px #000; paint-order: stroke fill; text-shadow: 6px 6px 0 #000;
       }
-      .jadsim-section-tag { margin-top: 1rem; font-family: var(--font-display); font-size: clamp(11px, 1.3vw, 15px); text-transform: uppercase; color: #fde047; text-shadow: 2px 2px 0 #000; }
-      .jadsim-section-pitch { max-width: 40rem; margin: 1.25rem auto 0; font-size: 1.15rem; line-height: 1.6; color: #f0f9ff; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
-      .jadsim-window { width: 100%; margin-top: 3rem; background: #000; border: 4px solid #000; box-shadow: 12px 12px 0 #000; text-align: left; }
-      .jadsim-window-bar { display: flex; align-items: center; gap: .85rem; padding: .55rem .8rem; background: #111827; color: #e5e7eb; font-family: var(--font-display); font-size: 11px; }
-      .jadsim-window-dots { display: flex; gap: 6px; }
-      .jadsim-window-dots i { width: 11px; height: 11px; background: #ef4444; border: 2px solid #000; }
-      .jadsim-window-dots i:nth-child(2) { background: #facc15; } .jadsim-window-dots i:nth-child(3) { background: #22c55e; }
-      .jadsim-window-video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #f8fafc; }
-      .jadsim-window-tabs { display: flex; gap: 0; border-top: 4px solid #000; background: #fff; }
-      .jadsim-window-tabs button {
-        flex: 1; padding: .85rem .5rem; background: #fff; color: #000; border: 0; border-right: 4px solid #000; cursor: pointer;
-        font-family: var(--font-display); font-size: 11px; transition: background .15s;
-      }
-      .jadsim-window-tabs button:last-child { border-right: 0; }
-      .jadsim-window-tabs button:hover { background: #e0f2fe; }
-      .jadsim-window-tabs button.is-active { background: #0ea5e9; color: #fff; text-shadow: 2px 2px 0 #000; }
-      .jadsim-section-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin: 2.5rem 0 2.25rem; padding: 0; list-style: none; }
-      .jadsim-section-chips li { background: #fff; color: #000; border: 2px solid #000; box-shadow: 3px 3px 0 #000; padding: .35rem .7rem; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+      .jadsim-section-tag { margin-top: 1rem; font-family: var(--font-display); font-size: clamp(11px, 1.1vw, 14px); text-transform: uppercase; color: #fde047; text-shadow: 2px 2px 0 #000; }
+      .jadsim-section-pitch { max-width: 34rem; margin-top: 1.25rem; font-size: 1.12rem; line-height: 1.6; color: #f0f9ff; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+      .jadsim-section-chips { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1.75rem 0 2.25rem; padding: 0; list-style: none; }
+      .jadsim-section-chips li { background: #fff; color: #000; border: 2px solid #000; box-shadow: 3px 3px 0 #000; padding: .3rem .65rem; font-size: 12px; font-weight: 700; text-transform: uppercase; }
       .jadsim-section-cta {
-        display: inline-flex; align-items: center; padding: 1.1rem 2rem; background: #fff; color: #000; text-decoration: none;
-        border: 4px solid #000; box-shadow: 8px 8px 0 #000; font-family: var(--font-display); font-size: 15px;
+        display: inline-flex; align-items: center; padding: 1.05rem 1.9rem; background: #fff; color: #000; text-decoration: none;
+        border: 4px solid #000; box-shadow: 8px 8px 0 #000; font-family: var(--font-display); font-size: 14px;
         transition: transform .15s, box-shadow .15s, background .15s;
       }
       .jadsim-section-cta:hover { background: #fde047; transform: translate(-3px, -3px); box-shadow: 11px 11px 0 #000; }
-      @media (prefers-reduced-motion: reduce) { .jadsim-section-waves { animation: none; } }
-      @media (max-width: 767px) {
-        .jadsim-section { padding: 4rem 1rem; min-height: 0; }
+      .jadsim-demos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+      .jadsim-demo { margin: 0; background: #000; border: 3px solid #000; box-shadow: 6px 6px 0 #000; }
+      .jadsim-demo:first-child { grid-column: 1 / -1; }
+      .jadsim-demo video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #f8fafc; }
+      .jadsim-demo figcaption { padding: .45rem .6rem; background: #111827; color: #e5e7eb; font-family: var(--font-display); font-size: 9px; }
+      @media (max-width: 900px) {
+        .jadsim-section { padding: 4rem 1rem; }
+        .jadsim-section-inner { grid-template-columns: 1fr; gap: 2.5rem; }
         .jadsim-section-brand img { width: 60px; height: 60px; border-radius: 13px; }
         .jadsim-section-pitch { font-size: 1rem; }
-        .jadsim-window { margin-top: 2rem; box-shadow: 7px 7px 0 #000; }
-        .jadsim-window-bar { font-size: 9px; }
-        .jadsim-window-tabs { flex-direction: column; }
-        .jadsim-window-tabs button { border-right: 0; border-bottom: 3px solid #000; font-size: 10px; padding: .7rem; }
-        .jadsim-window-tabs button:last-child { border-bottom: 0; }
         .jadsim-section-cta { width: 100%; justify-content: center; font-size: 11px; padding: 1rem .75rem; }
       }
 
