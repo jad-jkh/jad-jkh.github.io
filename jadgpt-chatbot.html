@@ -128,37 +128,50 @@
 
         /* Navigation Menu */
         .nav-menu {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 12px;
             background: var(--bg-light);
             border-bottom: 4px solid var(--border-thick);
         }
 
         .nav-button {
             background: white;
-            border: 4px solid var(--border-thick);
-            padding: 12px;
+            border: 2px solid var(--border-thick);
+            padding: 6px 8px;
             font-family: 'Press Start 2P', monospace;
-            font-size: 12px;
+            font-size: 9px;
             cursor: pointer;
             transition: all 0.15s;
-            box-shadow: 4px 4px 0px var(--border-thick);
+            box-shadow: 2px 2px 0px var(--border-thick);
             color: var(--text-dark);
             text-align: center;
             line-height: 1.4;
         }
 
         .nav-button:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px var(--border-thick);
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px var(--border-thick);
             background: var(--accent-yellow);
         }
 
         .nav-button:active {
             transform: translate(1px, 1px);
-            box-shadow: 3px 3px 0px var(--border-thick);
+            box-shadow: 1px 1px 0px var(--border-thick);
+        }
+
+        .offer-choices {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .nav-button.jadsim {
+            background: #0ea5e9;
+            color: white;
         }
 
         .nav-button.active {
@@ -169,9 +182,9 @@
         /* Sub Menu */
         .sub-menu {
             display: none;
-            flex-direction: column;
-            gap: 8px;
-            padding: 12px 16px;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 8px 12px;
             background: rgba(153, 69, 255, 0.1);
             border-bottom: 4px solid var(--border-thick);
         }
@@ -182,20 +195,20 @@
 
         .sub-menu-button {
             background: white;
-            border: 3px solid var(--border-thick);
-            padding: 8px 12px;
+            border: 2px solid var(--border-thick);
+            padding: 3px 8px;
             font-family: 'VT323', monospace;
             font-size: 16px;
             cursor: pointer;
             transition: all 0.15s;
-            box-shadow: 3px 3px 0px var(--border-thick);
+            box-shadow: 2px 2px 0px var(--border-thick);
             color: var(--text-dark);
             text-align: left;
         }
 
         .sub-menu-button:hover {
             transform: translate(-1px, -1px);
-            box-shadow: 4px 4px 0px var(--border-thick);
+            box-shadow: 3px 3px 0px var(--border-thick);
             background: var(--accent-yellow);
         }
 
@@ -416,9 +429,18 @@
                 font-size: 14px;
             }
 
+            .nav-menu {
+                gap: 5px;
+                padding: 8px;
+            }
+
             .nav-button {
-                font-size: 10px;
-                padding: 10px 8px;
+                font-size: 8px;
+                padding: 6px 7px;
+            }
+
+            .sub-menu-button {
+                font-size: 15px;
             }
 
             .message-content {
@@ -452,6 +474,7 @@
             <button class="nav-button" onclick="handleNavClick('projects', event)">PROJECTS</button>
             <button class="nav-button" onclick="handleNavClick('leadership', event)">LEADERSHIP</button>
             <button class="nav-button" onclick="handleNavClick('skills', event)">SKILLS</button>
+            <button class="nav-button jadsim" onclick="openJadSim()">jadSim ↗</button>
         </div>
 
         <!-- Sub Menus -->
@@ -558,6 +581,8 @@ WORK EXPERIENCE:
    - Delivered a technical capstone on capacitor-bank theory and application, presenting to 25+ directors and senior engineers and building 4 interactive HTML/SVG simulations adopted as a company-wide standard training reference
 
 ENGINEERING PROJECTS:
+
+0. jadSim - browser circuit simulator (jad-haddad.com/jadsim): Jad vibe coded it after online support for Multisim ended. Multisim-style, MNA + Newton-Raphson engine in TypeScript/React, op-amp models, scope, function generator, multimeter, 54 known-answer tests (all passing)
 
 1. Vyrex - Wrist-Worn Fall-Detection Wearable (Feb. 2026 - May 2026)
    - Founder, Hardware Lead in College Station, Texas
@@ -678,6 +703,54 @@ CERTIFICATIONS:
             }
         }
 
+        function openJadSim() {
+            askAbout('Tell me about jadSim');
+        }
+
+        function isJadSimQuestion(message) {
+            const msg = message.toLowerCase();
+            return msg.includes('jadsim') || msg.includes('simulator') || msg.includes('multisim');
+        }
+
+        // After the jadSim answer: wait a beat, then ask before sending anyone off the page
+        function offerJadSim() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message assistant';
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = 'J';
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = 'Want me to take you to jadSim so you can try it?';
+            const choices = document.createElement('div');
+            choices.className = 'offer-choices';
+            [['Yes, take me there!', true], ['Maybe later', false]].forEach(([label, yes]) => {
+                const btn = document.createElement('button');
+                btn.className = 'sub-menu-button';
+                btn.textContent = label;
+                btn.onclick = () => {
+                    choices.remove();
+                    addMessage(label, true);
+                    showTypingIndicator();
+                    setTimeout(() => {
+                        removeTypingIndicator();
+                        if (yes) {
+                            addMessage('Sure! Taking you there now.', false);
+                            setTimeout(() => { window.top.location.href = '/jadsim/'; }, 1200);
+                        } else {
+                            addMessage('No problem! It\'s always one click away with the jadSim button up top.', false);
+                        }
+                    }, 700);
+                };
+                choices.appendChild(btn);
+            });
+            contentDiv.appendChild(choices);
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(contentDiv);
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
         function askAbout(question) {
             // Close all sub-menus when a question is asked
             document.querySelectorAll('.sub-menu').forEach(menu => {
@@ -784,6 +857,11 @@ CERTIFICATIONS:
                 return "DARIAN IS FULL OF SHIT!!!";
                 }
             
+            // jadSim
+            if (isJadSimQuestion(msg)) {
+                return "Jad was bummed when online support for Multisim ended, so he vibe coded his own replacement: jadSim, a circuit simulator that runs right in your browser. It solves circuits with Modified Nodal Analysis and Newton-Raphson, handles diodes, Zeners, BJTs, MOSFETs and op-amps (down to the LM741's slew rate and bandwidth), and comes with a function generator, oscilloscope and multimeter. He ran 54 known-answer tests against it to make sure it gets the right answers, and all 54 pass.";
+            }
+
             // Vyrex
             if (msg.includes('vyrex') || msg.includes('fall detection') || msg.includes('fall-detection') || msg.includes('wearable') || msg.includes('imu')) {
                 return "Vyrex is Jad's wrist-worn fall-detection wearable (Feb. 2026 - May 2026), where he was Founder and Hardware Lead. He architected a compact ~30 x 25 mm 4-layer mixed-signal PCB through rev 3.0.0 in KiCad around an ESP32-C3 Mini BLE MCU and an LSM6DSV16XTR 6-axis IMU, with Li-Po charging, USB-C power, and MOSFET-driven haptics. A pre-certified MCU module eliminated FCC Part 15C testing (~$17,000 saved), and fall-detection decision trees run on the sensor's Machine Learning Core with a companion BLE retraining app!";
@@ -831,7 +909,7 @@ CERTIFICATIONS:
             
             // Projects general
             if (msg.includes('project')) {
-                return "Jad has four engineering projects: Vyrex (wrist-worn fall-detection wearable), Smart Table Solutions (STM32 motor-controlled desks), SoilSense (Arduino irrigation controller), and the Wi-Fi Desk Buddy (Raspberry Pi Pico clock + Pomodoro timer). Want to know more about any of these?";
+                return "Jad has four engineering projects: Vyrex (wrist-worn fall-detection wearable), Smart Table Solutions (STM32 motor-controlled desks), SoilSense (Arduino irrigation controller), and the Wi-Fi Desk Buddy (Raspberry Pi Pico clock + Pomodoro timer). He also built jadSim, a circuit simulator that runs in your browser. Want to know more about any of these?";
             }
             
             // Leadership general
@@ -873,6 +951,8 @@ CERTIFICATIONS:
                 
                 // Log to analytics (non-blocking)
                 logConversation(message, response);
+
+                if (isJadSimQuestion(message)) setTimeout(offerJadSim, 1500);
                 
                 sendButton.disabled = false;
                 userInput.disabled = false;

@@ -21553,6 +21553,9 @@ const Oy = [{
 }, {
 	name: "Skills",
 	to: "skills"
+}, {
+	name: "jadSim",
+	href: "./jadsim/"
 }];
 
 function U_() {
@@ -21582,7 +21585,14 @@ function U_() {
 					})
 				}), S.jsx("div", {
 					className: "hidden md:flex space-x-4",
-					children: Oy.map(a => S.jsx(pc.Link, {
+					children: Oy.map((a) => a.href ? S.jsxs("a", {
+						href: a.href,
+						target: "_blank",
+						rel: "noopener noreferrer",
+						className: "cursor-pointer px-4 py-2 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-sm transition-all inline-flex items-center justify-center gap-2",
+						title: "jadSim, the online circuit simulator",
+						children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "", style: { width: 18, height: 18, flexShrink: 0 } }), S.jsx("span", { className: "nav-jadsim-label", children: a.name })]
+					}, a.name) : S.jsx(pc.Link, {
 						to: a.to,
 						smooth: !0,
 						duration: 500,
@@ -21621,7 +21631,13 @@ function U_() {
 				className: "md:hidden absolute top-[calc(100%+3px)] left-0 right-0 bg-white p-4 shadow-xl z-40",
 				children: S.jsx("div", {
 					className: "flex flex-col space-y-2",
-					children: Oy.map(a => S.jsx(pc.Link, {
+					children: Oy.map((a) => a.href ? S.jsxs("a", {
+						href: a.href,
+						target: "_blank",
+						rel: "noopener noreferrer",
+						className: "cursor-pointer px-4 py-3 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-center transition-all inline-flex items-center justify-center gap-2",
+						children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "", style: { width: 18, height: 18, flexShrink: 0 } }), a.name]
+					}, a.name) : S.jsx(pc.Link, {
 						to: a.to,
 						smooth: !0,
 						duration: 500,
@@ -21632,6 +21648,19 @@ function U_() {
 					}, a.name))
 				})
 			})
+		})]
+	})
+}
+
+function JadSimCard() {
+	return S.jsxs("a", {
+		href: "./jadsim/",
+		target: "_blank",
+		rel: "noopener noreferrer",
+		className: "jadsim-card",
+		"data-testid": "card-jadsim",
+		children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "" }), S.jsxs("span", {
+			children: [S.jsx("b", { className: "jadsim-desktop", children: "Try jadSim now!" }), S.jsx("b", { className: "jadsim-phone", children: "Try jadSim on a computer!" }), S.jsx("small", { children: "the free online circuit simulator" })]
 		})]
 	})
 }
@@ -21987,16 +22016,6 @@ function Gallery({
 		})]
 	})
 }
-const swanShape = (() => {
-	const h = g => `polygon(${g.map(v => `${v[0]}% ${v[1]}%`).join(", ")})`;
-	return {
-		sheet: h([[100, 0], [92, 0], [84, 0], [76, 0], [68, 0], [60, 0], [52, 0], [40, 0], [28, 0], [0, 0], [0, 35], [0, 70], [0, 100], [50, 100], [100, 100], [100, 75], [100, 50], [100, 25]]),
-		half: h([[100, 25], [92, 25], [84, 25], [76, 25], [68, 25], [60, 25], [52, 25], [40, 25], [28, 25], [0, 25], [0, 42], [0, 58], [0, 75], [50, 75], [100, 75], [100, 62], [100, 50], [100, 38]]),
-		triangle: h([[76, 55.2], [72, 49.2], [67, 42.5], [62, 37.2], [56, 28.2], [53, 23.8], [50, 20.0], [40, 34.2], [30, 50.0], [20, 65.0], [15, 72.5], [10, 80.0], [30, 80.0], [50, 80.0], [90, 80.0], [85, 72.5], [82, 65.8], [79, 59.8]]),
-		swan: h([[98, 22], [89, 13], [81, 8], [73, 13], [73, 25], [70, 35], [62, 46], [58, 6], [45, 42], [20, 12], [34, 52], [8, 58], [30, 74], [62, 76], [84, 58], [88, 46], [84, 35], [85, 26]]),
-		flap: h([[98, 22], [89, 13], [81, 8], [73, 13], [73, 25], [70, 35], [62, 46], [70, 34], [48, 47], [18, 44], [34, 52], [8, 58], [30, 74], [62, 76], [84, 58], [88, 46], [84, 35], [85, 26]])
-	}
-})();
 const ea = ["./images/jad_w_pro.jpg", "./images/profile-pixel-jad.png", "./images/jad_w_spain.jpg"];
 ea.forEach(h => {
 	new Image().src = h
@@ -22036,7 +22055,15 @@ function tO() {
 		children: [S.jsx(U_, {}), S.jsxs("section", {
 			id: "hero",
 			className: "min-h-screen flex items-center justify-center pt-16 relative",
-			children: [S.jsxs("div", {
+			children: [S.jsxs(pc.Link, {
+				to: "education",
+				smooth: !0,
+				duration: 600,
+				offset: -90,
+				href: "#education",
+				className: "hero-scroll",
+				children: ["Explore my work", S.jsx("span", { "aria-hidden": !0, children: "\u2193" })]
+			}), S.jsxs("div", {
 				className: "absolute inset-0 z-0 pointer-events-none",
 				children: [S.jsx("div", {
 					className: "absolute inset-0 bg-[url('/images/hero-game.png')] bg-cover bg-center opacity-20"
@@ -22069,10 +22096,6 @@ function tO() {
 						},
 						className: "w-full md:w-1/2 flex justify-center",
 						children: S.jsxs(Ut.div, {
-							whileHover: {
-								rotate: 2,
-								scale: 1.02
-							},
 							className: "w-full aspect-square border-8 border-black bg-[#800020] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group cursor-pointer",
 							onClick: c,
 							"data-testid": "profile-image-carousel",
@@ -22083,28 +22106,20 @@ function tO() {
 									alt: "Jad K. Haddad",
 									className: "absolute inset-0 w-full h-full object-cover",
 									style: {
-										objectPosition: "center 25%",
-										clipPath: swanShape.sheet,
-										willChange: "clip-path, transform, filter"
+										objectPosition: "center 25%"
+									},
+									initial: {
+										x: "100%"
+									},
+									animate: {
+										x: "0%"
 									},
 									exit: {
-										zIndex: 5,
-										clipPath: [swanShape.sheet, swanShape.half, swanShape.triangle, swanShape.swan, swanShape.flap, swanShape.swan, swanShape.flap, swanShape.swan],
-										x: ["0%", "0%", "0%", "0%", "10%", "30%", "55%", "90%"],
-										y: ["0%", "0%", "0%", "0%", "-6%", "-20%", "-38%", "-65%"],
-										scale: [1, 1, .95, .75, .65, .55, .45, .35],
-										rotate: [0, 0, 0, 0, -4, -8, -12, -16],
-										filter: ["brightness(1)", "brightness(0.8)", "brightness(0.7)", "brightness(0.95)", "brightness(1)", "brightness(1)", "brightness(1)", "brightness(1)"],
-										transition: {
-											default: {
-												duration: 2.6,
-												times: [0, .15, .3, .45, .58, .7, .82, 1],
-												ease: "easeInOut"
-											},
-											zIndex: {
-												duration: 0
-											}
-										}
+										x: "-100%"
+									},
+									transition: {
+										duration: .8,
+										ease: [.65, 0, .35, 1]
 									}
 								}, e)
 							}), S.jsx("div", {
@@ -22161,8 +22176,11 @@ function tO() {
 								paintOrder: "stroke fill"
 							},
 							children: "Jad K. Haddad"
+						}), S.jsxs("p", {
+							className: "hero-tagline",
+							children: [S.jsx("strong", { children: "I like taking things apart to understand how they actually work, then building something better." }), S.jsx("span", { children: "Electronic Systems Engineering at Texas A&M. Co-founder of ZKK Consulting. Always learning something new." })]
 						}), S.jsxs("div", {
-							className: "flex flex-col gap-3 mb-8 items-center md:items-start",
+							className: "hero-badges flex flex-col gap-3 mb-8 items-center md:items-start",
 							children: [S.jsx("div", {
 								className: "inline-block border-4 border-black px-6 py-3 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-[#8a0a28]",
 								children: S.jsx("span", {
@@ -22177,6 +22195,8 @@ function tO() {
 								})
 							})]
 						}), S.jsxs("div", {
+							className: "jadsim-row",
+							children: [S.jsxs("div", {
 							className: "flex flex-wrap gap-4 justify-center md:justify-start",
 							children: [S.jsxs("a", {
 								href: "./images/RES_PUB.pdf",
@@ -22198,7 +22218,7 @@ function tO() {
 								}), "LinkedIn"]
 							}),
 							S.jsx("style", {
-								children: ".zkk-cta{background-color:#e3e3e3}.zkk-cta:hover{background-color:#b5b5b5}"
+								children: ".zkk-cta{background-color:#01340b}.zkk-cta:hover{background-color:#02501a}"
 							}),
 							S.jsxs("a", {
 								href: "https://www.zkkconsulting.com",
@@ -22207,11 +22227,12 @@ function tO() {
 								className: "inline-flex items-center gap-2 px-6 py-3 zkk-cta text-white border-4 border-black font-bold uppercase tracking-wide shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all",
 								"data-testid": "./images/ZKK_logo.png",
 								children: [S.jsx("img", {
-									src: "./images/ZKK_logo.png",
+									src: "./images/ZKK_logo_white.png",
 									alt: "ZKK Consulting",
 									className: "h-10 w-auto object-contain"
 								})]})
 						]
+						}), S.jsx(JadSimCard, {})]
 						})]
 					})]
 				})

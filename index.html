@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-hero="space">
   <head>
 
     <meta charset="UTF-8" />
@@ -35,6 +35,128 @@
     <script type="module" crossorigin src="./assets/index-DJjfoklT.js"></script>
     <link rel="stylesheet" href="./assets/index-CKFjU6b6.css">
     <link rel="stylesheet" href="./output.css">
+
+    <!-- jadSim card: flat, under the hero buttons, same width as that row -->
+    <style>
+      .jadsim-row { display: grid; gap: 1.25rem; width: fit-content; max-width: 100%; }
+      .jadsim-card {
+        display: flex; align-items: center; justify-content: center; gap: .75rem;
+        padding: .6rem 1rem; background: #fff; color: #000; text-decoration: none;
+        border: 4px solid #000; box-shadow: 6px 6px 0 rgba(0,0,0,.3);
+        transition: transform .15s, box-shadow .15s, background .15s;
+      }
+      .jadsim-card:hover, .jadsim-card:focus-visible { background: #bae6fd; transform: translateY(-4px); box-shadow: 8px 8px 0 rgba(0,0,0,.4); }
+      .jadsim-card img { width: 32px; height: 32px; flex-shrink: 0; }
+      .jadsim-card > span { display: flex; flex-direction: column; gap: .35rem; line-height: 1.15; text-align: left; min-width: 0; }
+      .jadsim-card b { font-family: var(--font-display); font-size: 12px; }
+      .jadsim-card small { font-size: 12px; font-weight: 600; color: #444; }
+      .jadsim-phone { display: none; }
+      @media (max-width: 767px) {
+        .jadsim-row { margin: 0 auto; }
+        .jadsim-desktop { display: none; }
+        .jadsim-phone { display: inline; }
+      }
+      /* Desktop nav: jadSim shows as just its logo until there's room for the label */
+      @media (max-width: 1279px) { .nav-jadsim-label { display: none; } }
+    </style>
+
+    <!-- POLISH: cleanup layer. Each numbered rule is independent; delete a rule (or this whole block) to undo it. -->
+    <style id="polish">
+      /* 1. Hero: hide the "B.S. in Electronic Systems Engineering" and "Embedded Systems & Hardware Design" badges */
+      .hero-badges { display: none !important; }
+
+      /* 2. Hero copy: plain readable dark text with a soft white halo, scroll prompt */
+      #hero { padding-bottom: 5rem; --hero-ink: #111827; --hero-halo: rgba(255,255,255,.95); --hero-wash: rgba(255,255,255,.72); --hero-wash-mid: rgba(255,255,255,.5); }
+      #hero h1 { margin-bottom: 1.25rem; }
+      .hero-tagline {
+        max-width: 36rem; margin: 0 0 2rem; font-family: "Inter", system-ui, sans-serif; color: var(--hero-ink);
+        text-shadow: 0 0 2px var(--hero-halo), 0 0 6px var(--hero-halo), 0 0 14px var(--hero-halo), 0 0 24px var(--hero-halo);
+      }
+      .hero-tagline strong { display: block; font-weight: 700; font-size: clamp(1.2rem, 1.6vw, 1.45rem); line-height: 1.35; letter-spacing: -.01em; }
+      .hero-tagline span { display: block; margin-top: .7rem; font-weight: 500; font-size: 1.02rem; line-height: 1.6; }
+      .hero-scroll {
+        position: absolute; left: 50%; bottom: 1.25rem; translate: -50% 0; z-index: 10;
+        display: flex; flex-direction: column; align-items: center; gap: .35rem; cursor: pointer;
+        font-family: var(--font-display); font-size: 10px; text-transform: uppercase;
+        color: var(--hero-ink); text-shadow: 0 0 2px var(--hero-halo), 0 0 8px var(--hero-halo);
+      }
+      .hero-scroll span { font-size: 18px; animation: hero-bob 1.6s steps(2) infinite; }
+      @keyframes hero-bob { 50% { transform: translateY(5px); } }
+      @media (max-width: 767px) {
+        .hero-tagline { margin-left: auto; margin-right: auto; }
+        .hero-scroll { display: none; }
+      }
+
+      /* 3. Hero background: four pixel-art scenes (Aero day, golden sunrise, red sunset, meadow) cross-fading every 9s
+            over the checkerboard, each slowly panning. A soft wash behind the text keeps it readable. */
+      #hero > div.absolute.inset-0 { overflow: hidden; }
+      #hero > div.absolute.inset-0 > div:first-child { display: none; }
+      #hero > div.absolute.inset-0 > div:not(:first-child):not(:last-child) {
+        inset: -6% !important; opacity: 0; image-rendering: pixelated;
+        background-position: center !important; background-size: cover !important; background-repeat: no-repeat !important;
+      }
+      #hero > div.absolute.inset-0 > div:nth-child(2) { background-image: url("./images/hero-scene-day.png") !important;     animation: scene-show 36s linear 0s infinite, scene-pan 40s ease-in-out 0s infinite alternate !important; }
+      #hero > div.absolute.inset-0 > div:nth-child(3) { background-image: url("./images/hero-scene-sunrise.png") !important; animation: scene-show 36s linear -27s infinite, scene-pan 40s ease-in-out -10s infinite alternate !important; }
+      #hero > div.absolute.inset-0 > div:nth-child(4) { background-image: url("./images/hero-scene-sunset.png") !important;  animation: scene-show 36s linear -18s infinite, scene-pan 40s ease-in-out -20s infinite alternate !important; }
+      #hero > div.absolute.inset-0 > div:nth-child(5) { background-image: url("./images/hero-scene-meadow.png") !important;  animation: scene-show 36s linear -9s infinite, scene-pan 40s ease-in-out -30s infinite alternate !important; }
+      @keyframes scene-show { 0%, 22% { opacity: .78; } 25%, 97% { opacity: 0; } 100% { opacity: .78; } }
+      @keyframes scene-pan { from { transform: translateX(-3%); } to { transform: translateX(3%); } }
+      /* readability: a soft light wash that fades in from the text side (no box) */
+      #hero > div.absolute.inset-0::after {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(90deg, var(--hero-wash) 0%, var(--hero-wash-mid) 38%, transparent 62%);
+      }
+      @media (max-width: 767px) {
+        #hero > div.absolute.inset-0::after { background: linear-gradient(180deg, transparent 0%, transparent 32%, var(--hero-wash-mid) 44%, var(--hero-wash) 60%, var(--hero-wash) 100%); }
+      }
+
+      /* SPACE THEME: on while <html> has data-hero="space". Delete that attribute in index.html to go back to the sky scenes. */
+      html[data-hero="space"] #hero { --hero-ink: #f8fafc; --hero-halo: rgba(2,6,23,.95); --hero-wash: rgba(2,6,23,.72); --hero-wash-mid: rgba(2,6,23,.5); }
+      html[data-hero="space"] #hero h1 { color: #cbd5e1; }
+      html[data-hero="space"] #hero > div.absolute.inset-0 { background: #050816; }
+      html[data-hero="space"] #hero > div.absolute.inset-0 > div:nth-child(2) { background-image: url("./images/hero-scene-earthrise.png") !important; }
+      html[data-hero="space"] #hero > div.absolute.inset-0 > div:nth-child(3) { background-image: url("./images/hero-scene-nebula.png") !important; }
+      html[data-hero="space"] #hero > div.absolute.inset-0 > div:nth-child(4) { background-image: url("./images/hero-scene-saturn.png") !important; }
+      html[data-hero="space"] #hero > div.absolute.inset-0 > div:nth-child(5) { background-image: url("./images/hero-scene-solar.png") !important; }
+
+      /* 4. Type: Inter for body copy in the content cards; the hero stays fully retro (VT323 + pixel headings) */
+      body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif; font-size: 1rem; letter-spacing: -.005em; }
+      #hero { font-family: var(--font-body); font-size: 1.25rem; letter-spacing: 0; }
+      #hero .jadsim-card small { font-family: var(--font-body); font-size: 15px; font-weight: 400; }
+
+      /* 5. (removed: nav restyle, back to the original white pixel buttons) */
+
+      /* 6. Skills: drop the emoji icons in the card corners and on certifications */
+      #skills .absolute.top-3.right-3,
+      #skills .flex.items-center > .text-2xl:first-child { display: none; }
+
+      /* 7. Experience & leadership cards on phones: logo above the title, no mid-word breaks, full-width card */
+      @media (max-width: 767px) {
+        :is(#experience, #leadership) .relative.pl-8 { padding-left: 0; }
+        :is(#experience, #leadership) .w-1.bg-black { display: none; }
+        :is(#experience, #leadership) .flex.items-start.gap-3 { flex-direction: column; gap: .75rem; }
+        :is(#experience, #leadership) h3 { font-size: 14px !important; line-height: 1.45; overflow-wrap: normal !important; word-break: normal !important; padding-right: 1.5rem; }
+        :is(#experience, #leadership) .md\:hidden.inline-block { white-space: nowrap; font-size: 10px; }
+      }
+
+      /* 8. Hero buttons on phones: Resume + LinkedIn share a row, ZKK gets its own */
+      @media (max-width: 767px) {
+        #hero .jadsim-row > div { justify-content: center; }
+        #hero .jadsim-row > div > a { padding-left: 1.1rem; padding-right: 1.1rem; }
+        #hero .jadsim-row > div > a.zkk-cta { flex-basis: 100%; justify-content: center; }
+      }
+
+      /* 11. Bigger, calmer checkerboard behind the whole site (was 20px squares) */
+      body { background-size: 80px 80px; background-position: 0 0, 0 40px, 40px -40px, -40px 0; }
+
+      /* 9. Keyboard users: a clear focus ring on every link and button */
+      a:focus-visible, button:focus-visible { outline: 3px solid #0ea5e9 !important; outline-offset: 3px; }
+
+      /* 10. Respect "reduce motion" system setting for CSS animations */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      }
+    </style>
 
   </head>
   <body>

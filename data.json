@@ -1,5 +1,5 @@
 {
-  "education": [{"id": 2, "school": "Texas A&M University", "degree": "B.S. in Electronic Systems Engineering  |  3.3 GPA", "year": "AUG. 2023 - DEC. 2027", "description": "Focused on Embedded Design, Power Systems, Microcontrollers, and Software Development."}],
+  "education": [{"id": 2, "school": "Texas A&M University", "degree": "B.S. in Electronic Systems Engineering  |  3.3 GPA", "year": "AUG. 2023 - DEC. 2027", "description": "Focused on Embedded Design, Power Systems, Microcontrollers, and Software Development. Relevant coursework: Analog & Digital Electronics, Circuit Analysis, Microcontroller Architecture, Embedded Systems Software, Electronic Instrumentation, Electronics Testing, Electromagnetics & High-Frequency Systems, Power Systems & Circuits, Wireless Transmission Systems."}],
   "experience": [
     {
       "id": 1,
@@ -151,6 +151,18 @@
     {"id": 34, "name": "AcSELerator QuickSet", "category": "Software", "proficiency": 4},
     {"id": 35, "name": "LTspice / Multisim", "category": "Software", "proficiency": 4},
     {"id": 36, "name": "Solid Edge", "category": "Software", "proficiency": 3},
-    {"id": 37, "name": "ProjectWise", "category": "Software", "proficiency": 3}
+    {"id": 37, "name": "ProjectWise", "category": "Software", "proficiency": 3},
+    {"id": 46, "name": "Sensor Integration (6-axis IMU, capacitive moisture, ultrasonic)", "category": "Technical", "proficiency": 4},
+    {"id": 47, "name": "Closed-Loop PWM Motor Control", "category": "Technical", "proficiency": 4},
+    {"id": 48, "name": "Capacitor-Bank & Transformer Protection (ANSI device numbers)", "category": "Technical", "proficiency": 4},
+    {"id": 49, "name": "Wi-Fi Connectivity & NTP Time Sync", "category": "Technical", "proficiency": 3},
+    {"id": 50, "name": "FCC / FDA Certification Pathways", "category": "Technical", "proficiency": 3},
+    {"id": 51, "name": "Competitive Teardown Analysis", "category": "Technical", "proficiency": 4},
+    {"id": 52, "name": "Circuit Simulation Engines (Modified Nodal Analysis, Newton-Raphson)", "category": "Technical", "proficiency": 4},
+    {"id": 53, "name": "TypeScript / React", "category": "Programming", "proficiency": 4},
+    {"id": 54, "name": "MicroPython", "category": "Programming", "proficiency": 4},
+    {"id": 55, "name": "KiCad", "category": "Software", "proficiency": 5},
+    {"id": 56, "name": "Doble, Arbiter & Omicron Relay Test Sets", "category": "Software", "proficiency": 4},
+    {"id": 57, "name": "Git / GitHub", "category": "Software", "proficiency": 4}
   ]
 }

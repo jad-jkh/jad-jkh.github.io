@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jadSim · made by Jad Haddad</title>
+    <meta name="description" content="jadSim: a circuit simulator in the browser, made by Jad Haddad." />
+    <script>
+      // Apply the saved (or system) theme before the first paint, so dark mode never flashes white.
+      try {
+        var saved = localStorage.getItem('jadsim-theme');
+        var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="./assets/index-DVf92n4_.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DxV7DjJT.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
