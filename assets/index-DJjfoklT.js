@@ -21555,8 +21555,18 @@ const Oy = [{
 	to: "skills"
 }, {
 	name: "jadSim",
-	href: "#jadsim"
+	to: "jadsim",
+	icon: !0
 }];
+
+// Smooth-scroll so the section's top edge lands right under the nav bar. The bar shrinks once the page
+// is scrolled (py-2): 60px tall on desktop, 56px below the md breakpoint.
+function goToSection(id) {
+	const t = document.getElementById(id);
+	if (!t) return;
+	const navH = window.innerWidth >= 768 ? 60 : 56;
+	window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - navH, behavior: "smooth" });
+}
 
 function U_() {
 	const [e, n] = T.useState(!1), [i, o] = T.useState(!1);
@@ -21585,19 +21595,12 @@ function U_() {
 					})
 				}), S.jsx("div", {
 					className: "hidden md:flex space-x-4",
-					children: Oy.map((a) => a.href ? S.jsxs("a", {
-						href: a.href,
-						onClick: ev => { ev.preventDefault(); n(!1); const t = document.getElementById("jadsim"); t && t.scrollIntoView({ behavior: "smooth" }); },
-						className: "cursor-pointer px-4 py-2 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-sm transition-all inline-flex items-center justify-center gap-2",
-						title: "jadSim, the free online circuit simulator",
-						children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "", style: { width: 18, height: 18, flexShrink: 0 } }), S.jsx("span", { className: "nav-jadsim-label", children: a.name })]
-					}, a.name) : S.jsx(pc.Link, {
-						to: a.to,
-						smooth: !0,
-						duration: 500,
-						offset: -100,
-						className: "cursor-pointer px-4 py-2 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-sm transition-all",
-						children: a.name
+					children: Oy.map(a => S.jsxs("a", {
+						href: "#" + a.to,
+						onClick: ev => { ev.preventDefault(); goToSection(a.to); },
+						className: "cursor-pointer px-4 py-2 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-sm transition-all" + (a.icon ? " inline-flex items-center justify-center gap-2" : ""),
+						title: a.icon ? "jadSim, the free online circuit simulator" : void 0,
+						children: a.icon ? [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "", style: { width: 18, height: 18, flexShrink: 0 } }), S.jsx("span", { className: "nav-jadsim-label", children: a.name })] : a.name
 					}, a.name))
 				}), S.jsx("button", {
 					className: `md:hidden p-1 border-2 transition-all duration-300
@@ -21630,19 +21633,11 @@ function U_() {
 				className: "md:hidden absolute top-[calc(100%+3px)] left-0 right-0 bg-white p-4 shadow-xl z-40",
 				children: S.jsx("div", {
 					className: "flex flex-col space-y-2",
-					children: Oy.map((a) => a.href ? S.jsxs("a", {
-						href: a.href,
-						onClick: ev => { ev.preventDefault(); n(!1); const t = document.getElementById("jadsim"); t && t.scrollIntoView({ behavior: "smooth" }); },
-						className: "cursor-pointer px-4 py-3 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-center transition-all inline-flex items-center justify-center gap-2",
-						children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "", style: { width: 18, height: 18, flexShrink: 0 } }), a.name]
-					}, a.name) : S.jsx(pc.Link, {
-						to: a.to,
-						smooth: !0,
-						duration: 500,
-						offset: -100,
-						onClick: () => n(!1),
-						className: "cursor-pointer px-4 py-3 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-center transition-all",
-						children: a.name
+					children: Oy.map(a => S.jsxs("a", {
+						href: "#" + a.to,
+						onClick: ev => { ev.preventDefault(); n(!1); goToSection(a.to); },
+						className: "cursor-pointer px-4 py-3 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-center transition-all" + (a.icon ? " inline-flex items-center justify-center gap-2" : ""),
+						children: a.icon ? [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "", style: { width: 18, height: 18, flexShrink: 0 } }), a.name] : a.name
 					}, a.name))
 				})
 			})
