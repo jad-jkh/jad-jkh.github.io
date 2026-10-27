@@ -21665,12 +21665,6 @@ function JadSimCard() {
 	})
 }
 
-const JADSIM_DEMOS = [
-	{ label: "Inverting amplifier", src: "./images/jadsim/demo-1.mp4", poster: "./images/jadsim/demo-1.webp" },
-	{ label: "Half-wave rectifier", src: "./images/jadsim/demo-2.mp4", poster: "./images/jadsim/demo-2.webp" },
-	{ label: "Transistor LED switch", src: "./images/jadsim/demo-3.mp4", poster: "./images/jadsim/demo-3.webp" }
-];
-
 function JadSimSection() {
 	const i = T.useRef(null);
 	// play the videos only while the section is on screen
@@ -21705,7 +21699,7 @@ function JadSimSection() {
 					children: "When online support for Multisim ended, I built my own. Drop in parts, wire them up, press run, and watch real waveforms on the scope, all in your browser, in light or dark mode."
 				}), S.jsx("ul", {
 					className: "jadsim-section-chips",
-					children: ["No install", "Runs in your browser", "Light & dark mode", "Op-amps, diodes, BJTs & MOSFETs", "Scope, function gen & multimeter", "Save & open .jsim files", "54 known-answer tests passing"].map(u => S.jsx("li", { children: u }, u))
+					children: ["No install", "Runs in your browser", "Light & dark mode", "Op-amps, diodes, BJTs & MOSFETs", "Scope, function gen & multimeter", "Save & open .jsim files", "71 known-answer tests passing"].map(u => S.jsx("li", { children: u }, u))
 				}), S.jsxs("a", {
 					href: "./jadsim/",
 					target: "_blank",
@@ -21715,16 +21709,19 @@ function JadSimSection() {
 					children: [S.jsx("span", { className: "jadsim-desktop", children: "Try jadSim now \u25B6" }), S.jsx("span", { className: "jadsim-phone", children: "Try jadSim on a computer \u25B6" })]
 				})]
 			}), S.jsx("div", {
-				className: "jadsim-demos",
-				children: JADSIM_DEMOS.map(u => S.jsxs("figure", {
-					className: "jadsim-demo",
-					children: [S.jsx("video", {
-						src: u.src,
-						poster: u.poster,
-						autoPlay: !0, muted: !0, loop: !0, playsInline: !0, preload: "metadata",
-						"aria-label": "jadSim running the " + u.label + " example"
-					}), S.jsx("figcaption", { children: u.label })]
-				}, u.label))
+				className: "jadsim-demo",
+				children: [S.jsx("video", {
+					src: "./images/jadsim/reel.mp4",
+					poster: "./images/jadsim/reel.webp",
+					autoPlay: !0, muted: !0, loop: !0, playsInline: !0, preload: "metadata",
+					"aria-label": "jadSim running several example circuits"
+				}), S.jsx("img", {
+					className: "jadsim-storm",
+					src: "./images/jad-storm.webp",
+					alt: "",
+					loading: "lazy",
+					width: 96, height: 96
+				})]
 			})]
 		})]
 	})

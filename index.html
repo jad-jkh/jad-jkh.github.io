@@ -174,7 +174,7 @@
       }
 
       /* 15. jadSim product section above the footer: demo footage under a jadSim-blue tint,
-             pitch on the left, all three recorded demos playing small on the right */
+             pitch on the left, a reel of recorded demos on the right, electrified Jad tucked in the corner */
       .jadsim-section { position: relative; overflow: hidden; border-top: 4px solid #000; padding: 6rem 1rem; color: #fff; }
       .jadsim-section-bg { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; filter: blur(3px) saturate(1.2); }
       .jadsim-section-tint { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(14,165,233,.9) 0%, rgba(2,132,199,.9) 55%, rgba(3,105,161,.94) 100%); }
@@ -195,17 +195,16 @@
         transition: transform .15s, box-shadow .15s, background .15s;
       }
       .jadsim-section-cta:hover { background: #fde047; transform: translate(-3px, -3px); box-shadow: 11px 11px 0 #000; }
-      .jadsim-demos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-      .jadsim-demo { margin: 0; background: #000; border: 3px solid #000; box-shadow: 6px 6px 0 #000; }
-      .jadsim-demo:first-child { grid-column: 1 / -1; }
+      .jadsim-demo { position: relative; background: #000; border: 4px solid #000; box-shadow: 10px 10px 0 #000; }
       .jadsim-demo video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #f8fafc; }
-      .jadsim-demo figcaption { padding: .45rem .6rem; background: #111827; color: #e5e7eb; font-family: var(--font-display); font-size: 9px; }
+      .jadsim-storm { position: absolute; right: -14px; bottom: -14px; width: 48px; height: 48px; image-rendering: pixelated; border: 2px solid #000; box-shadow: 3px 3px 0 #000; }
       @media (max-width: 900px) {
         .jadsim-section { padding: 4rem 1rem; }
         .jadsim-section-inner { grid-template-columns: 1fr; gap: 2.5rem; }
         .jadsim-section-brand img { width: 60px; height: 60px; border-radius: 13px; }
         .jadsim-section-pitch { font-size: 1rem; }
         .jadsim-section-cta { width: 100%; justify-content: center; font-size: 11px; padding: 1rem .75rem; }
+        .jadsim-storm { right: -8px; bottom: -8px; width: 40px; height: 40px; }
       }
 
       /* 9. Keyboard users: a clear focus ring on every link and button */
