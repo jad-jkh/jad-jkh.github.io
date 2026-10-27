@@ -21555,7 +21555,7 @@ const Oy = [{
 	to: "skills"
 }, {
 	name: "jadSim",
-	href: "./jadsim/"
+	href: "#jadsim"
 }];
 
 function U_() {
@@ -21587,10 +21587,9 @@ function U_() {
 					className: "hidden md:flex space-x-4",
 					children: Oy.map((a) => a.href ? S.jsxs("a", {
 						href: a.href,
-						target: "_blank",
-						rel: "noopener noreferrer",
+						onClick: ev => { ev.preventDefault(); n(!1); const t = document.getElementById("jadsim"); t && t.scrollIntoView({ behavior: "smooth" }); },
 						className: "cursor-pointer px-4 py-2 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-sm transition-all inline-flex items-center justify-center gap-2",
-						title: "jadSim, the online circuit simulator",
+						title: "jadSim, the free online circuit simulator",
 						children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "", style: { width: 18, height: 18, flexShrink: 0 } }), S.jsx("span", { className: "nav-jadsim-label", children: a.name })]
 					}, a.name) : S.jsx(pc.Link, {
 						to: a.to,
@@ -21633,8 +21632,7 @@ function U_() {
 					className: "flex flex-col space-y-2",
 					children: Oy.map((a) => a.href ? S.jsxs("a", {
 						href: a.href,
-						target: "_blank",
-						rel: "noopener noreferrer",
+						onClick: ev => { ev.preventDefault(); n(!1); const t = document.getElementById("jadsim"); t && t.scrollIntoView({ behavior: "smooth" }); },
 						className: "cursor-pointer px-4 py-3 border-2 border-black bg-white text-black hover:bg-[#1a51b8] hover:text-white hover:border-[#1a51b8] font-[family-name:var(--font-display)] text-center transition-all inline-flex items-center justify-center gap-2",
 						children: [S.jsx("img", { src: "./jadsim/favicon.svg", alt: "", style: { width: 18, height: 18, flexShrink: 0 } }), a.name]
 					}, a.name) : S.jsx(pc.Link, {
@@ -22117,12 +22115,7 @@ function tO() {
 		children: [S.jsx(U_, {}), S.jsxs("section", {
 			id: "hero",
 			className: "min-h-screen flex items-center justify-center pt-16 relative",
-			children: [S.jsxs(pc.Link, {
-				to: "education",
-				smooth: !0,
-				duration: 600,
-				offset: -90,
-				href: "#education",
+			children: [S.jsxs("div", {
 				className: "hero-scroll",
 				children: ["Explore my work", S.jsx("span", { "aria-hidden": !0, children: "\u2193" })]
 			}), S.jsxs("div", {

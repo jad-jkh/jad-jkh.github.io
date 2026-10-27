@@ -75,7 +75,7 @@
       .hero-tagline span { display: block; margin-top: .7rem; font-weight: 500; font-size: 1.02rem; line-height: 1.6; }
       .hero-scroll {
         position: absolute; left: 50%; top: calc(100svh - 4.25rem); translate: -50% 0; z-index: 10;
-        display: flex; flex-direction: column; align-items: center; gap: .35rem; cursor: pointer;
+        display: flex; flex-direction: column; align-items: center; gap: .35rem; pointer-events: none;
         font-family: var(--font-display); font-size: 10px; text-transform: uppercase;
         color: var(--hero-ink); text-shadow: 0 0 2px var(--hero-halo), 0 0 8px var(--hero-halo);
       }
@@ -175,7 +175,8 @@
 
       /* 15. jadSim product section above the footer: demo footage under a jadSim-blue tint,
              pitch on the left, a reel of recorded demos on the right, electrified Jad tucked in the corner */
-      .jadsim-section { position: relative; overflow: hidden; border-top: 4px solid #000; padding: 6rem 1rem; color: #fff; }
+      .jadsim-section { position: relative; overflow: hidden; border-top: 4px solid #000; padding: 6rem 1rem; color: #fff; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; scroll-margin-top: 0; }
+      .jadsim-section-inner { width: 100%; }
       .jadsim-section-bg { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; filter: blur(3px) saturate(1.2); }
       .jadsim-section-tint { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(14,165,233,.9) 0%, rgba(2,132,199,.9) 55%, rgba(3,105,161,.94) 100%); }
       .jadsim-section-inner { position: relative; max-width: 74rem; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: center; }
@@ -205,6 +206,14 @@
         .jadsim-section-pitch { font-size: 1rem; }
         .jadsim-section-cta { width: 100%; justify-content: center; font-size: 11px; padding: 1rem .75rem; }
         .jadsim-storm { right: -8px; bottom: -8px; width: 40px; height: 40px; }
+      }
+
+      /* 16. Skills on phones: compact chips that wrap instead of one long full-width stack */
+      @media (max-width: 767px) {
+        #skills .flex.flex-col[style*="gap"] { flex-direction: row; flex-wrap: wrap; gap: .45rem !important; }
+        #skills .flex.flex-col[style*="gap"] > span { display: inline-block; width: auto; padding: .35rem .6rem; font-size: 12.5px; line-height: 1.3; box-shadow: 2px 2px 0 #000; }
+        #skills .bg-white.p-6 { padding: 1.25rem; }
+        #skills .bg-yellow-50 .text-lg { font-size: 1rem; }
       }
 
       /* 9. Keyboard users: a clear focus ring on every link and button */
