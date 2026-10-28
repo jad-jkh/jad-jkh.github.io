@@ -21586,12 +21586,16 @@ function U_() {
 					smooth: !0,
 					duration: 500,
 					className: "cursor-pointer group",
-					children: S.jsx("img", {
-						src: "./images/JKH_logo-sm.png",
-						alt: "JKH Logo",
-						className: `h-9 md:h-10 w-auto transition-all duration-300 border-black border-2
-                ${e?"invert-0 hover:invert":"invert hover:invert-0"} 
-              `
+					title: "Jad K. Haddad: back to the top",
+					children: S.jsxs("span", {
+						className: "jad-logo relative inline-block",
+						children: [S.jsx("img", {
+							src: "./images/jad-ring-logo.png",
+							alt: "Jad K. Haddad",
+							className: "jad-logo-img"
+						}), S.jsx("span", { className: "jad-ring-flash", "aria-hidden": !0 }),
+						S.jsx("svg", { className: "jad-ring-star", viewBox: "0 0 9 9", shapeRendering: "crispEdges", "aria-hidden": !0,
+							children: S.jsx("path", { d: "M4 0h1v3h1v1h3v1H6v1H5v3H4V6H3V5H0V4h3V3h1z" }) })]
 					})
 				}), S.jsx("div", {
 					className: "hidden md:flex space-x-4",
