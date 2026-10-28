@@ -22553,13 +22553,14 @@ function tO() {
                                            children: [S.jsx("div", {
                                              className: "w-10 h-10 bg-white border-2 border-black shadow-md flex items-center justify-center cursor-pointer",
                                              children: S.jsx("img", {
-                                               src: "./images/JKH_white-sm.png",
-                                               alt: "JKH Experience",
-                                               className: "w-10 h-10 object-contain"
+                                               src: "./images/jad-ring-logo.png",
+                                               alt: "Jad K. Haddad",
+                                               className: "w-10 h-10 object-contain",
+                                               style: { imageRendering: "pixelated" }
                                              })
                                            }), S.jsx("div", {
                                              className: "absolute right-0 top-12 bg-white text-black text-xs font-bold px-2 py-1 border-2 border-black whitespace-nowrap opacity-0 group-hover/jkh:opacity-100 transition-opacity pointer-events-none z-10",
-                                             children: "Sold Under JKH Name"
+                                             children: "Sold Under My Name"
                                            })]
                                          }), x && S.jsxs("div", {
                                            className: "absolute top-2 left-2 flex flex-col",
@@ -23050,7 +23051,11 @@ function tO() {
                    
                    S.jsxs("p", {
 					className: "font-[family-name:var(--font-body)] text-gray-500 text-lg",
-					children: ["© ", new Date().getFullYear(), " JKH, Jad K. Haddad"]
+					children: ["© ", new Date().getFullYear(), " ", S.jsx("img", {
+						src: "./images/jad-ring-logo.png",
+						alt: "",
+						style: { display: "inline-block", height: "1.6em", width: "auto", verticalAlign: "-0.45em", margin: "0 0.3em", imageRendering: "pixelated" }
+					}), "Jad K. Haddad"]
 				})]
 			})
 		}), S.jsx(Ac, {
