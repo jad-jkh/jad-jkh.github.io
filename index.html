@@ -58,13 +58,25 @@
       /* Desktop nav: jadSim shows as just its logo until there's room for the label */
       @media (max-width: 1279px) { .nav-jadsim-label { display: none; } }
       /* Top-left logo: Jad with the ring. Hovering grows and tilts it, so it reads as a button. */
-      .jad-logo-img { display: block; height: 36px; width: auto; transform-origin: 20% 60%;
-        transition: transform .2s cubic-bezier(.34,1.56,.64,1), filter .2s;
+      .jad-logo { transform-origin: 20% 60%; transition: transform .2s cubic-bezier(.34,1.56,.64,1); }
+      .jad-logo-img { display: block; height: 36px; width: auto; transition: filter .2s;
         filter: drop-shadow(2px 2px 0 rgba(0,0,0,.35)); }
       @media (min-width: 768px) { .jad-logo-img { height: 40px; } }
-      .group:hover .jad-logo-img, .group:focus-visible .jad-logo-img { transform: scale(1.3) rotate(-4deg);
-        filter: drop-shadow(3px 3px 0 rgba(0,0,0,.45)); }
-      .group:active .jad-logo-img { transform: scale(1.15) rotate(-2deg); }
+      .group:hover .jad-logo, .group:focus-visible .jad-logo { transform: scale(1.3) rotate(-4deg); }
+      .group:hover .jad-logo-img, .group:focus-visible .jad-logo-img { filter: drop-shadow(3px 3px 0 rgba(0,0,0,.45)); }
+      .group:active .jad-logo { transform: scale(1.15) rotate(-2deg); }
+      /* The ring glints now and then (timer script at the end of body adds .is-shining at random moments):
+         the ring's own pixels flash white, then a pixel star twinkles on it. */
+      .jad-ring-flash { position: absolute; inset: 0; pointer-events: none; opacity: 0; background: #fffbe6;
+        -webkit-mask: url(./images/jad-ring-logo.png) 0 0 / 100% 100% no-repeat; mask: url(./images/jad-ring-logo.png) 0 0 / 100% 100% no-repeat;
+        clip-path: inset(78% 85% 8% 8%); }
+      .jad-ring-star { position: absolute; left: 13.5%; top: 80%; width: 32%; height: auto; aspect-ratio: 1; translate: -50% -50%;
+        pointer-events: none; fill: #fff; scale: 0; opacity: 0; filter: drop-shadow(0 0 2px #ffe27a) drop-shadow(0 0 1px #fff); }
+      .jad-logo.is-shining .jad-ring-flash { animation: jad-ring-flash .5s ease-out; }
+      .jad-logo.is-shining .jad-ring-star { animation: jad-ring-star .8s ease-out .08s; }
+      @keyframes jad-ring-flash { 0% { opacity: 0; } 30% { opacity: .85; } 100% { opacity: 0; } }
+      @keyframes jad-ring-star { 0% { scale: 0; opacity: 0; rotate: 0deg; } 35% { scale: 1; opacity: 1; } 100% { scale: 0; opacity: 0; rotate: 90deg; } }
+      @media (prefers-reduced-motion: reduce) { .jad-logo.is-shining .jad-ring-flash, .jad-logo.is-shining .jad-ring-star { animation: none; } }
     </style>
 
     <!-- POLISH: cleanup layer. Each numbered rule is independent; delete a rule (or this whole block) to undo it. -->
@@ -356,5 +368,20 @@
       })();
     </script>
 
+    <!-- Top-left logo: make the ring glint at random moments, every 2.5 to 7.5 s -->
+    <script>
+      (function () {
+        function shine() {
+          var logo = document.querySelector('.jad-logo');
+          if (logo && !document.hidden) {
+            logo.classList.remove('is-shining');
+            void logo.offsetWidth;
+            logo.classList.add('is-shining');
+          }
+          setTimeout(shine, 2500 + Math.random() * 5000);
+        }
+        setTimeout(shine, 1200 + Math.random() * 1500);
+      })();
+    </script>
   </body>
 </html>
