@@ -21694,7 +21694,7 @@ function JadSimSection() {
 				}), S.jsx("p", { className: "jadsim-section-tag", children: "the free online circuit simulator" }),
 				S.jsx("p", {
 					className: "jadsim-section-pitch",
-					children: "What do you do when a tool you used goes offline? You make your own! When online support for Multisim ended, I built jadSim. It's test-approved and approved for class use by Texas A&M high-frequency design and electronics professors. Drop in parts, wire them up, press run, and watch real waveforms on the scope, all in your browser, in light or dark mode."
+					children: "What do you do when a tool you used goes offline? You make your own! When online support for Multisim ended, I built jadSim. It's test- and class-approved by Texas A&M high-frequency design and electronics professors. Drop in parts, wire them up, press run, and watch real waveforms on the scope, all in your browser, in light or dark mode."
 				}), S.jsx("ul", {
 					className: "jadsim-section-chips",
 					children: ["No install", "Runs in your browser", "Light & dark mode", "Op-amps, diodes, BJTs & MOSFETs", "Scope, function gen & multimeter", "Save & open .jsim files", "71 known-answer tests passing"].map(u => S.jsx("li", { children: u }, u))
